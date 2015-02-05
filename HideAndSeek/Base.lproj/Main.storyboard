@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="HideAndSeek" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RKG-9d-a7u" customClass="GMSMapView">
+                                <rect key="frame" x="150" y="150" width="300" height="300"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="location-pointer.png" translatesAutoresizingMaskIntoConstraints="NO" id="SVS-2s-IuP">
+                                        <rect key="frame" x="140" y="120" width="20" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="20" id="YNG-yE-rmB"/>
+                                            <constraint firstAttribute="height" constant="20" id="f69-8f-f61"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="0.82672311379999996" blue="0.05124533723" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="SEp-2B-Gf2"/>
+                                    <constraint firstAttribute="width" constant="300" id="UoP-p5-gqS"/>
+                                    <constraint firstAttribute="centerY" secondItem="SVS-2s-IuP" secondAttribute="centerY" constant="20" id="lBf-nm-o3t"/>
+                                    <constraint firstAttribute="centerX" secondItem="SVS-2s-IuP" secondAttribute="centerX" id="x6K-pE-G3o"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerY" secondItem="RKG-9d-a7u" secondAttribute="centerY" id="2ud-SI-jnN"/>
+                            <constraint firstAttribute="centerX" secondItem="RKG-9d-a7u" secondAttribute="centerX" id="K3i-F3-3iW"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="mapCenterPinImage" destination="SVS-2s-IuP" id="5df-rv-c21"/>
+                        <outlet property="mapView" destination="RKG-9d-a7u" id="2LE-Ly-brX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="location-pointer.png" width="94" height="128"/>
+    </resources>
+</document>
