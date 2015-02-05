@@ -28,6 +28,7 @@
 		799384DC1A835B89004420B8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 799384DB1A835B89004420B8 /* QuartzCore.framework */; };
 		799384DE1A835B8F004420B8 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 799384DD1A835B8F004420B8 /* SystemConfiguration.framework */; };
 		799384E31A835ED7004420B8 /* location-pointer.png in Resources */ = {isa = PBXBuildFile; fileRef = 799384E21A835ED7004420B8 /* location-pointer.png */; };
+		799384E51A83788B004420B8 /* HideAndSeek_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 799384E41A83788B004420B8 /* HideAndSeek_icon.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		799384DD1A835B8F004420B8 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		799384DF1A835C8A004420B8 /* HideAndSeek-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HideAndSeek-Bridging-Header.h"; sourceTree = "<group>"; };
 		799384E21A835ED7004420B8 /* location-pointer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "location-pointer.png"; sourceTree = "<group>"; };
+		799384E41A83788B004420B8 /* HideAndSeek_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HideAndSeek_icon.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +138,7 @@
 		7993849B1A8357A5004420B8 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				799384E41A83788B004420B8 /* HideAndSeek_icon.png */,
 				799384E21A835ED7004420B8 /* location-pointer.png */,
 				7993849C1A8357A5004420B8 /* Info.plist */,
 			);
@@ -260,6 +263,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				799384E51A83788B004420B8 /* HideAndSeek_icon.png in Resources */,
 				799384E31A835ED7004420B8 /* location-pointer.png in Resources */,
 				799384A31A8357A5004420B8 /* Main.storyboard in Resources */,
 				799384A81A8357A5004420B8 /* LaunchScreen.xib in Resources */,
