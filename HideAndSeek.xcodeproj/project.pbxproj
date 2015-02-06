@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7918684E1A844F780080E43E /* HideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7918684D1A844F780080E43E /* HideViewController.swift */; };
 		7993849E1A8357A5004420B8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7993849D1A8357A5004420B8 /* AppDelegate.swift */; };
 		799384A01A8357A5004420B8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7993849F1A8357A5004420B8 /* ViewController.swift */; };
 		799384A31A8357A5004420B8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 799384A11A8357A5004420B8 /* Main.storyboard */; };
@@ -42,6 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7918684D1A844F780080E43E /* HideViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HideViewController.swift; sourceTree = "<group>"; };
 		799384981A8357A5004420B8 /* HideAndSeek.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HideAndSeek.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7993849C1A8357A5004420B8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7993849D1A8357A5004420B8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 				799384A61A8357A5004420B8 /* LaunchScreen.xib */,
 				7993849B1A8357A5004420B8 /* Supporting Files */,
 				799384DF1A835C8A004420B8 /* HideAndSeek-Bridging-Header.h */,
+				7918684D1A844F780080E43E /* HideViewController.swift */,
 			);
 			path = HideAndSeek;
 			sourceTree = "<group>";
@@ -286,6 +289,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7918684E1A844F780080E43E /* HideViewController.swift in Sources */,
 				799384A01A8357A5004420B8 /* ViewController.swift in Sources */,
 				7993849E1A8357A5004420B8 /* AppDelegate.swift in Sources */,
 			);
@@ -495,6 +499,7 @@
 				799384B91A8357A6004420B8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		799384BA1A8357A6004420B8 /* Build configuration list for PBXNativeTarget "HideAndSeekTests" */ = {
 			isa = XCConfigurationList;
@@ -503,6 +508,7 @@
 				799384BC1A8357A6004420B8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
