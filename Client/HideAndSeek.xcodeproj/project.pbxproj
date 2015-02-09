@@ -15,7 +15,6 @@
 		799384A81A8357A5004420B8 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 799384A61A8357A5004420B8 /* LaunchScreen.xib */; };
 		799384B41A8357A6004420B8 /* HideAndSeekTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799384B31A8357A6004420B8 /* HideAndSeekTests.swift */; };
 		799384C01A835A5F004420B8 /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 799384BF1A835A5F004420B8 /* GoogleMaps.framework */; };
-		799384C61A835B1A004420B8 /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 799384C51A835B1A004420B8 /* GoogleMaps.bundle */; };
 		799384C81A835B48004420B8 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 799384C71A835B48004420B8 /* AVFoundation.framework */; };
 		799384CA1A835B4F004420B8 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 799384C91A835B4F004420B8 /* CoreData.framework */; };
 		799384CC1A835B57004420B8 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 799384CB1A835B57004420B8 /* CoreLocation.framework */; };
@@ -30,6 +29,8 @@
 		799384DE1A835B8F004420B8 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 799384DD1A835B8F004420B8 /* SystemConfiguration.framework */; };
 		799384E31A835ED7004420B8 /* location-pointer.png in Resources */ = {isa = PBXBuildFile; fileRef = 799384E21A835ED7004420B8 /* location-pointer.png */; };
 		799384E51A83788B004420B8 /* HideAndSeek_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 799384E41A83788B004420B8 /* HideAndSeek_icon.png */; };
+		79DBF9F81A84BD2400116EC7 /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 79DBF9F71A84BD2400116EC7 /* GoogleMaps.bundle */; };
+		79DBF9FA1A84C2B900116EC7 /* SeekViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DBF9F91A84C2B900116EC7 /* SeekViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,7 +56,6 @@
 		799384B21A8357A6004420B8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		799384B31A8357A6004420B8 /* HideAndSeekTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideAndSeekTests.swift; sourceTree = "<group>"; };
 		799384BF1A835A5F004420B8 /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
-		799384C51A835B1A004420B8 /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = "../../Downloads/GoogleMaps-iOS-1.9.1/GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle"; sourceTree = "<group>"; };
 		799384C71A835B48004420B8 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		799384C91A835B4F004420B8 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		799384CB1A835B57004420B8 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -71,6 +71,8 @@
 		799384DF1A835C8A004420B8 /* HideAndSeek-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HideAndSeek-Bridging-Header.h"; sourceTree = "<group>"; };
 		799384E21A835ED7004420B8 /* location-pointer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "location-pointer.png"; sourceTree = "<group>"; };
 		799384E41A83788B004420B8 /* HideAndSeek_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HideAndSeek_icon.png; sourceTree = "<group>"; };
+		79DBF9F71A84BD2400116EC7 /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
+		79DBF9F91A84C2B900116EC7 /* SeekViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeekViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +128,7 @@
 		7993849A1A8357A5004420B8 /* HideAndSeek */ = {
 			isa = PBXGroup;
 			children = (
+				79DBF9F91A84C2B900116EC7 /* SeekViewController.swift */,
 				7993849D1A8357A5004420B8 /* AppDelegate.swift */,
 				7993849F1A8357A5004420B8 /* ViewController.swift */,
 				799384A11A8357A5004420B8 /* Main.storyboard */,
@@ -174,13 +177,13 @@
 				799384D71A835B7D004420B8 /* libz.dylib */,
 				799384D51A835B77004420B8 /* libicucore.dylib */,
 				799384D31A835B70004420B8 /* libc++.dylib */,
+				79DBF9F71A84BD2400116EC7 /* GoogleMaps.bundle */,
 				799384D11A835B68004420B8 /* ImageIO.framework */,
 				799384CF1A835B63004420B8 /* GLKit.framework */,
 				799384CD1A835B5D004420B8 /* CoreText.framework */,
 				799384CB1A835B57004420B8 /* CoreLocation.framework */,
 				799384C91A835B4F004420B8 /* CoreData.framework */,
 				799384C71A835B48004420B8 /* AVFoundation.framework */,
-				799384C51A835B1A004420B8 /* GoogleMaps.bundle */,
 				799384BF1A835A5F004420B8 /* GoogleMaps.framework */,
 			);
 			name = Frameworks;
@@ -269,9 +272,9 @@
 				799384E51A83788B004420B8 /* HideAndSeek_icon.png in Resources */,
 				799384E31A835ED7004420B8 /* location-pointer.png in Resources */,
 				799384A31A8357A5004420B8 /* Main.storyboard in Resources */,
+				79DBF9F81A84BD2400116EC7 /* GoogleMaps.bundle in Resources */,
 				799384A81A8357A5004420B8 /* LaunchScreen.xib in Resources */,
 				799384A51A8357A5004420B8 /* Images.xcassets in Resources */,
-				799384C61A835B1A004420B8 /* GoogleMaps.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -291,6 +294,7 @@
 			files = (
 				7918684E1A844F780080E43E /* HideViewController.swift in Sources */,
 				799384A01A8357A5004420B8 /* ViewController.swift in Sources */,
+				79DBF9FA1A84C2B900116EC7 /* SeekViewController.swift in Sources */,
 				7993849E1A8357A5004420B8 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

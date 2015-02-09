@@ -10,9 +10,12 @@ import UIKit
 
 class HideViewController: UIViewController {
 
+    var xCoordinate : Double!
+    var yCoordinate : Double!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        postToServerFunction(randomKeyGenerator() , xCoordinate: xCoordinate , yCoordinate: yCoordinate)
         // Do any additional setup after loading the view.
     }
 
@@ -40,4 +43,22 @@ class HideViewController: UIViewController {
         
         return randomStringKey
     }
+    
+    
+    func postToServerFunction(randomStringKey : String, xCoordinate : Double, yCoordinate:Double){
+        println("let's post")
+        var url: NSURL = NSURL(string: "http://54.200.204.64:5000")!
+        var request:NSMutableURLRequest = NSMutableURLRequest(URL:url)
+        var bodyData = "key=\(randomStringKey)&xCoordinate=\(xCoordinate)&yCoordinate=\(yCoordinate)&password=password"
+        request.HTTPMethod = "POST"
+        request.HTTPBody = bodyData.dataUsingEncoding(NSUTF8StringEncoding);
+        NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue())
+            {
+                (response, data, error) in
+                println(response)
+                
+        }
+    }
+
+   
 }

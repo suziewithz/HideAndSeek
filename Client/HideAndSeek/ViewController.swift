@@ -16,23 +16,35 @@ class ViewController: UIViewController , CLLocationManagerDelegate{
     @IBOutlet weak var latitudeLabel : UILabel!
     @IBOutlet weak var longitudeLabel : UILabel!
     
+    @IBOutlet weak var hideButton: UIButton!
+    @IBOutlet weak var seekButton: UIButton!
     
-    @IBOutlet weak var mapCenterPinImage: UIImageView!
-    @IBOutlet weak var pinImageVerticalConstraint: NSLayoutConstraint!
+    
+    @IBAction func hideButtonPressed(sender: AnyObject) {
+        self.performSegueWithIdentifier("PushDataToHide", sender: self)
+    }
+    
+    @IBAction func seekButtonPressed(sender: AnyObject) {
+    }
     
     var mapPinPoint: GMSMarker!
     let locationManager = CLLocationManager()
+    
+    var xCoordinate : Double!
+    var yCoordinate : Double!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
-        let currentLatitude : Double = locationManager.location.coordinate.latitude
-        let currentLongitude : Double = locationManager.location.coordinate.longitude
+        xCoordinate = locationManager.location.coordinate.latitude
+        yCoordinate = locationManager.location.coordinate.longitude
         
-        latitudeLabel.text = "Latitude : \(currentLatitude)"
-        longitudeLabel.text = "Longitude: \(currentLongitude)"
+        latitudeLabel.text = "Latitude : \(xCoordinate)"
+        longitudeLabel.text = "Longitude: \(yCoordinate)"
+        
+        
         
     }
 
@@ -64,6 +76,21 @@ class ViewController: UIViewController , CLLocationManagerDelegate{
             
             // 7
             locationManager.stopUpdatingLocation()
+        }
+    }
+    
+        
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let identifier :NSString! = segue.identifier
+        if identifier.isEqualToString("PushDataToHide") {
+            let viewController :HideViewController! = segue.destinationViewController as HideViewController
+            viewController.xCoordinate = self.xCoordinate
+            viewController.yCoordinate = self.yCoordinate
+        }
+        if identifier.isEqualToString("PushDataToSeek") {
+            let viewController :HideViewController! = segue.destinationViewController as HideViewController
+            viewController.xCoordinate = self.xCoordinate
+            viewController.yCoordinate = self.yCoordinate
         }
     }
 }

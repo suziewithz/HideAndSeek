@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Js3-W3-21W">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Hide and Seek-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="HideAndSeek" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RKG-9d-a7u" customClass="GMSMapView">
+                                <rect key="frame" x="175" y="157" width="250" height="250"/>
+                                <color key="backgroundColor" red="1" green="0.82672311379999996" blue="0.05124533723" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="250" id="SEp-2B-Gf2"/>
+                                    <constraint firstAttribute="width" constant="250" id="UoP-p5-gqS"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Latitude" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0fo-7s-Xy9">
+                                <rect key="frame" x="269" y="417" width="63" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Longitude" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8bs-kV-EVP">
+                                <rect key="frame" x="262" y="448" width="77" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Hide" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YL8-gs-lyA">
+                                <rect key="frame" x="199" y="70" width="83" height="47"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="40"/>
+                                <color key="textColor" red="0.99215686270000003" green="0.75686274509999996" blue="0.035294117649999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="&amp;" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t5a-DJ-zkA">
+                                <rect key="frame" x="287" y="70" width="26" height="47"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="40"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Seek" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sqe-Vi-ufc">
+                                <rect key="frame" x="318" y="70" width="90" height="47"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="40"/>
+                                <color key="textColor" red="0.96862745098039216" green="0.29411764705882354" blue="0.47843137254901963" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zKE-eg-988">
+                                <rect key="frame" x="250" y="509" width="32" height="30"/>
+                                <state key="normal" title="Hide">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="hideButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="h08-Xp-rM1"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="loN-VZ-jvD">
+                                <rect key="frame" x="318" y="509" width="35" height="30"/>
+                                <state key="normal" title="Seek">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="seekButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="59F-V4-hxX"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerY" secondItem="RKG-9d-a7u" secondAttribute="centerY" id="2ud-SI-jnN"/>
+                            <constraint firstItem="t5a-DJ-zkA" firstAttribute="leading" secondItem="YL8-gs-lyA" secondAttribute="trailing" constant="5" id="3uu-en-sOl"/>
+                            <constraint firstAttribute="centerX" secondItem="YL8-gs-lyA" secondAttribute="centerX" constant="70" id="CmI-ze-Dya"/>
+                            <constraint firstItem="Sqe-Vi-ufc" firstAttribute="leading" secondItem="t5a-DJ-zkA" secondAttribute="trailing" constant="5" id="GQj-Vd-QUg"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="loN-VZ-jvD" secondAttribute="bottom" constant="50" id="Gxd-2k-TSu"/>
+                            <constraint firstAttribute="centerX" secondItem="0fo-7s-Xy9" secondAttribute="centerX" id="IaH-nO-7JM"/>
+                            <constraint firstAttribute="centerX" secondItem="RKG-9d-a7u" secondAttribute="centerX" id="K3i-F3-3iW"/>
+                            <constraint firstItem="t5a-DJ-zkA" firstAttribute="leading" secondItem="YL8-gs-lyA" secondAttribute="trailing" constant="5" id="KzH-S8-CWa"/>
+                            <constraint firstItem="RKG-9d-a7u" firstAttribute="top" secondItem="t5a-DJ-zkA" secondAttribute="bottom" constant="40" id="Mfg-Of-ZAe"/>
+                            <constraint firstItem="8bs-kV-EVP" firstAttribute="top" secondItem="0fo-7s-Xy9" secondAttribute="bottom" constant="10" id="NfF-Nm-Syl"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="zKE-eg-988" secondAttribute="bottom" constant="50" id="QJA-kb-XFO"/>
+                            <constraint firstAttribute="centerX" secondItem="8bs-kV-EVP" secondAttribute="centerX" id="QfA-Pd-eN1"/>
+                            <constraint firstAttribute="centerX" secondItem="t5a-DJ-zkA" secondAttribute="centerX" id="TSM-aj-TIb"/>
+                            <constraint firstItem="0fo-7s-Xy9" firstAttribute="top" secondItem="RKG-9d-a7u" secondAttribute="bottom" constant="10" id="UKP-4r-j05"/>
+                            <constraint firstAttribute="centerX" secondItem="loN-VZ-jvD" secondAttribute="centerX" constant="-30" id="Vei-7j-BCB"/>
+                            <constraint firstItem="Sqe-Vi-ufc" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="50" id="W8f-if-K33"/>
+                            <constraint firstItem="zKE-eg-988" firstAttribute="top" secondItem="RKG-9d-a7u" secondAttribute="bottom" constant="100" id="XGY-3N-pti"/>
+                            <constraint firstItem="Sqe-Vi-ufc" firstAttribute="leading" secondItem="t5a-DJ-zkA" secondAttribute="trailing" constant="5" id="ZdU-ts-z3L"/>
+                            <constraint firstItem="YL8-gs-lyA" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="50" id="h6D-Rt-8xd"/>
+                            <constraint firstItem="Sqe-Vi-ufc" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="50" id="j8v-Gx-kZB"/>
+                            <constraint firstItem="t5a-DJ-zkA" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="50" id="lvW-HW-U1P"/>
+                            <constraint firstAttribute="centerX" secondItem="zKE-eg-988" secondAttribute="centerX" constant="30" id="whd-Mk-uiW"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="CmI-ze-Dya"/>
+                                <exclude reference="2ud-SI-jnN"/>
+                                <exclude reference="KzH-S8-CWa"/>
+                                <exclude reference="GQj-Vd-QUg"/>
+                                <exclude reference="W8f-if-K33"/>
+                                <exclude reference="XGY-3N-pti"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" title="Hide and Seek" id="f6z-5T-3f5"/>
+                    <connections>
+                        <outlet property="hideButton" destination="zKE-eg-988" id="Sz9-Bw-B6P"/>
+                        <outlet property="latitudeLabel" destination="0fo-7s-Xy9" id="tcx-Hy-7ZZ"/>
+                        <outlet property="longitudeLabel" destination="8bs-kV-EVP" id="cO2-jG-Jpk"/>
+                        <outlet property="mapView" destination="RKG-9d-a7u" id="2LE-Ly-brX"/>
+                        <outlet property="seekButton" destination="loN-VZ-jvD" id="2ht-5n-yFK"/>
+                        <segue destination="iQQ-0j-NNj" kind="push" identifier="PushDataToHide" id="Ndv-xN-7df"/>
+                        <segue destination="P5c-Mo-5Tc" kind="push" identifier="PushDataToSeek" id="VDz-T1-By7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1123" y="450"/>
+        </scene>
+        <!--Let's hide-->
+        <scene sceneID="1Rh-g3-8Xf">
+            <objects>
+                <viewController id="iQQ-0j-NNj" customClass="HideViewController" customModule="HideAndSeek" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Nf7-o9-YJ3"/>
+                        <viewControllerLayoutGuide type="bottom" id="Euf-hI-Kpy"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zrS-HH-X13">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Let's hide" id="JlS-v0-5gX"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YW6-Dv-5RI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1875" y="450"/>
+        </scene>
+        <!--Let's seek-->
+        <scene sceneID="ART-X2-2rZ">
+            <objects>
+                <viewController id="P5c-Mo-5Tc" customClass="SeekViewController" customModule="HideAndSeek" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="SaL-8M-tDU"/>
+                        <viewControllerLayoutGuide type="bottom" id="zJN-MY-Ugq"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="uuy-K2-EUz">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Let's seek" id="Ymt-J7-t8V"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sCO-MN-9Ch" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1443" y="1275"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="3C9-lB-kyA">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Js3-W3-21W" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Yhf-hh-rvF">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="erV-Sm-yPV"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NXE-pw-NrH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="663" y="-243"/>
+        </scene>
+    </scenes>
+</document>
