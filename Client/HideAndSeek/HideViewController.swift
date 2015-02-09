@@ -70,11 +70,12 @@ class HideViewController: UIViewController {
         NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { (response: NSURLResponse!, data: NSData!, error: NSError!) -> Void in
             var err : NSError
             println("\(data)")
-            var fileID:NSString = NSString(data: data, encoding: NSUTF8StringEncoding)!
+            var fileID: String = NSString(data: data, encoding: NSUTF8StringEncoding)!
             println("\(fileID)")
+            requestDictionary[ "fileID" ] = fileID
         }
         
-        return String(fileID)
+        return requestDictionary["fileID"]!
     }
 
    
