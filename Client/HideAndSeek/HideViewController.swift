@@ -20,6 +20,9 @@ class HideViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         selectedFileLabel.text = selectedFile
+        var paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String
+        var getDataPath = paths.stringByAppendingPathComponent(selectedFile)
+        let originalData = NSData(contentsOfFile: getDataPath, options: NSDataReadingOptions.DataReadingUncached, error: nil)
         // postToServerFunction(randomKeyGenerator() , xCoordinate: xCoordinate , yCoordinate: yCoordinate)
     }
 
