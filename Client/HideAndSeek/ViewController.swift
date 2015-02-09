@@ -19,12 +19,16 @@ class ViewController: UIViewController , CLLocationManagerDelegate{
     @IBOutlet weak var hideButton: UIButton!
     @IBOutlet weak var seekButton: UIButton!
     
+    var hideOrSeek : String!
     
     @IBAction func hideButtonPressed(sender: AnyObject) {
-        self.performSegueWithIdentifier("PushDataToHide", sender: self)
+        hideOrSeek = "hide"
+        self.performSegueWithIdentifier("PushDataToMedium", sender: self)
     }
     
     @IBAction func seekButtonPressed(sender: AnyObject) {
+        hideOrSeek = "seek"
+        self.performSegueWithIdentifier("PushDataToMedium", sender: self)
     }
     
     var mapPinPoint: GMSMarker!
@@ -82,15 +86,11 @@ class ViewController: UIViewController , CLLocationManagerDelegate{
         
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let identifier :NSString! = segue.identifier
-        if identifier.isEqualToString("PushDataToHide") {
-            let viewController :HideViewController! = segue.destinationViewController as HideViewController
+        if identifier.isEqualToString("PushDataToMedium") {
+            let viewController :SelectFileViewController! = segue.destinationViewController as SelectFileViewController
             viewController.xCoordinate = self.xCoordinate
             viewController.yCoordinate = self.yCoordinate
-        }
-        if identifier.isEqualToString("PushDataToSeek") {
-            let viewController :HideViewController! = segue.destinationViewController as HideViewController
-            viewController.xCoordinate = self.xCoordinate
-            viewController.yCoordinate = self.yCoordinate
+            viewController.hideOrSeek =  hideOrSeek
         }
     }
 }

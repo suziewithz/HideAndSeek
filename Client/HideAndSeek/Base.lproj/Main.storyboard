@@ -117,8 +117,7 @@
                         <outlet property="longitudeLabel" destination="8bs-kV-EVP" id="cO2-jG-Jpk"/>
                         <outlet property="mapView" destination="RKG-9d-a7u" id="2LE-Ly-brX"/>
                         <outlet property="seekButton" destination="loN-VZ-jvD" id="2ht-5n-yFK"/>
-                        <segue destination="iQQ-0j-NNj" kind="push" identifier="PushDataToHide" id="Ndv-xN-7df"/>
-                        <segue destination="P5c-Mo-5Tc" kind="push" identifier="PushDataToSeek" id="VDz-T1-By7"/>
+                        <segue destination="YKl-Mm-7rM" kind="push" identifier="PushDataToMedium" id="7TT-zV-bYq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -136,13 +135,63 @@
                     <view key="view" contentMode="scaleToFill" id="zrS-HH-X13">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Kd-c9-flZ">
+                                <rect key="frame" x="279" y="114" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="2Kd-c9-flZ" secondAttribute="centerX" id="UEm-c2-zzj"/>
+                            <constraint firstItem="2Kd-c9-flZ" firstAttribute="top" secondItem="Nf7-o9-YJ3" secondAttribute="bottom" constant="50" id="pqo-Vf-gut"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Let's hide" id="JlS-v0-5gX"/>
+                    <connections>
+                        <outlet property="selectedFileLabel" destination="2Kd-c9-flZ" id="fHw-QX-bmf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YW6-Dv-5RI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1875" y="450"/>
+            <point key="canvasLocation" x="1980" y="450"/>
+        </scene>
+        <!--Select File-->
+        <scene sceneID="hiZ-1J-KPE">
+            <objects>
+                <viewController id="YKl-Mm-7rM" customClass="SelectFileViewController" customModule="HideAndSeek" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="l1L-Wo-KYO"/>
+                        <viewControllerLayoutGuide type="bottom" id="GJw-Ln-mwj"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="1a4-WS-glg">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="zmb-NX-fJv">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <sections/>
+                                <connections>
+                                    <outlet property="dataSource" destination="YKl-Mm-7rM" id="zIa-Ox-mdc"/>
+                                    <outlet property="delegate" destination="YKl-Mm-7rM" id="ZYf-oH-71U"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Select File" id="06x-tu-YOE"/>
+                    <connections>
+                        <outlet property="tableView" destination="zmb-NX-fJv" id="NjF-CW-0TW"/>
+                        <segue destination="iQQ-0j-NNj" kind="push" identifier="PushDataToHide" id="PND-dw-g0Q"/>
+                        <segue destination="P5c-Mo-5Tc" kind="push" identifier="PushDataToSeek" id="ABc-cU-GK5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="blF-pE-yd7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1238" y="1268"/>
         </scene>
         <!--Let's seek-->
         <scene sceneID="ART-X2-2rZ">
@@ -155,13 +204,28 @@
                     <view key="view" contentMode="scaleToFill" id="uuy-K2-EUz">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LfU-1B-YQh">
+                                <rect key="frame" x="279" y="114" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="LfU-1B-YQh" secondAttribute="centerX" id="aPs-IW-er5"/>
+                            <constraint firstItem="LfU-1B-YQh" firstAttribute="top" secondItem="SaL-8M-tDU" secondAttribute="bottom" constant="50" id="nB8-Dg-naT"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Let's seek" id="Ymt-J7-t8V"/>
+                    <connections>
+                        <outlet property="selectedFileLabel" destination="LfU-1B-YQh" id="4c9-A7-pcN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sCO-MN-9Ch" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1443" y="1275"/>
+            <point key="canvasLocation" x="1980" y="1789"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="3C9-lB-kyA">

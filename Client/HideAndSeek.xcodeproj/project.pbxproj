@@ -31,6 +31,7 @@
 		799384E51A83788B004420B8 /* HideAndSeek_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 799384E41A83788B004420B8 /* HideAndSeek_icon.png */; };
 		79DBF9F81A84BD2400116EC7 /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 79DBF9F71A84BD2400116EC7 /* GoogleMaps.bundle */; };
 		79DBF9FA1A84C2B900116EC7 /* SeekViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DBF9F91A84C2B900116EC7 /* SeekViewController.swift */; };
+		79E1A45A1A8896FD00F6F44F /* SelectFileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E1A4591A8896FD00F6F44F /* SelectFileViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,7 @@
 		799384E41A83788B004420B8 /* HideAndSeek_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HideAndSeek_icon.png; sourceTree = "<group>"; };
 		79DBF9F71A84BD2400116EC7 /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
 		79DBF9F91A84C2B900116EC7 /* SeekViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeekViewController.swift; sourceTree = "<group>"; };
+		79E1A4591A8896FD00F6F44F /* SelectFileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectFileViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +139,7 @@
 				7993849B1A8357A5004420B8 /* Supporting Files */,
 				799384DF1A835C8A004420B8 /* HideAndSeek-Bridging-Header.h */,
 				7918684D1A844F780080E43E /* HideViewController.swift */,
+				79E1A4591A8896FD00F6F44F /* SelectFileViewController.swift */,
 			);
 			path = HideAndSeek;
 			sourceTree = "<group>";
@@ -294,6 +297,7 @@
 			files = (
 				7918684E1A844F780080E43E /* HideViewController.swift in Sources */,
 				799384A01A8357A5004420B8 /* ViewController.swift in Sources */,
+				79E1A45A1A8896FD00F6F44F /* SelectFileViewController.swift in Sources */,
 				79DBF9FA1A84C2B900116EC7 /* SeekViewController.swift in Sources */,
 				7993849E1A8357A5004420B8 /* AppDelegate.swift in Sources */,
 			);

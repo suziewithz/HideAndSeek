@@ -12,10 +12,13 @@ class SeekViewController: UIViewController {
 
     var xCoordinate : Double!
     var yCoordinate : Double!
+    var selectedFile : String!
+    
+    @IBOutlet weak var selectedFileLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        selectedFileLabel.text = selectedFile
         // Do any additional setup after loading the view.
     }
 

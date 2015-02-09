@@ -12,21 +12,21 @@ class HideViewController: UIViewController {
 
     var xCoordinate : Double!
     var yCoordinate : Double!
+    var selectedFile : String!
+    
+    @IBOutlet weak var selectedFileLabel: UILabel!
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        postToServerFunction(randomKeyGenerator() , xCoordinate: xCoordinate , yCoordinate: yCoordinate)
-        // Do any additional setup after loading the view.
+        selectedFileLabel.text = selectedFile
+        // postToServerFunction(randomKeyGenerator() , xCoordinate: xCoordinate , yCoordinate: yCoordinate)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-    
 
-    
-    
     func randomKeyGenerator() -> String {
         var arr : [String] = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","0","1","2","3","4","5","6","7","8","9"]
         
@@ -49,7 +49,7 @@ class HideViewController: UIViewController {
         println("let's post")
         var url: NSURL = NSURL(string: "http://54.200.204.64:5000/hide")!
         var request:NSMutableURLRequest = NSMutableURLRequest(URL:url)
-    
+        var fileID : NSString!
         let password = "password"
         var requestDictionary = [
             "xCoordinate" : "\(xCoordinate)",
@@ -69,14 +69,12 @@ class HideViewController: UIViewController {
         NSURLConnection(request:  request, delegate: self, startImmediately: true)
         NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { (response: NSURLResponse!, data: NSData!, error: NSError!) -> Void in
             var err : NSError
-            println("\(data)")
-            var fileID: String = NSString(data: data, encoding: NSUTF8StringEncoding)!
+            fileID = NSString(data: data, encoding: NSUTF8StringEncoding)!
             println("\(fileID)")
-            requestDictionary[ "fileID" ] = fileID
         }
-        
-        return requestDictionary["fileID"]!
+        return "error"
     }
-
-   
+    
+    
+    
 }
