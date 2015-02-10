@@ -7,58 +7,113 @@
 //
 
 import UIKit
+//import CryptoSwift
+
+extension String  {
+    var md5: String! {
+        let str = self.cStringUsingEncoding(NSUTF8StringEncoding)
+        let strLen = CC_LONG(self.lengthOfBytesUsingEncoding(NSUTF8StringEncoding))
+        let digestLen = Int(CC_MD5_DIGEST_LENGTH)
+        let result = UnsafeMutablePointer<CUnsignedChar>.alloc(digestLen)
+        
+        CC_MD5(str!, strLen, result)
+        
+        var hash = NSMutableString()
+        for i in 0..<digestLen {
+            hash.appendFormat("%02x", result[i])
+        }
+        
+        result.dealloc(digestLen)
+        
+        return String(format: hash)
+    }
+}
 
 class HideViewController: UIViewController {
 
     var xCoordinate : Double!
     var yCoordinate : Double!
     var selectedFile : String!
+    var password : String!
+    var encryptedPassword : String!
     
     @IBOutlet weak var selectedFileLabel: UILabel!
 
-    
     override func viewDidLoad() {
+        
         super.viewDidLoad()
-        selectedFileLabel.text = selectedFile
-        var paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String
-        var getDataPath = paths.stringByAppendingPathComponent(selectedFile)
-        let originalData = NSData(contentsOfFile: getDataPath, options: NSDataReadingOptions.DataReadingUncached, error: nil)
-        // postToServerFunction(randomKeyGenerator() , xCoordinate: xCoordinate , yCoordinate: yCoordinate)
+        
+        let iv = randomIVGenerator()
+        
+        selectedFileLabel.text = "You selected \(selectedFile)"
+        
+        //
+        
+        //let selectedData = getDataFromFile(selectedFile)
+        //let encryptedData = encryptFile(selectedData, key: password, iv: iv)
+        
+        
+
+        // postToServerFunction(randomIVGenerator() , xCoordinate: xCoordinate , yCoordinate: yCoordinate)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
-    func randomKeyGenerator() -> String {
+    
+    func storeData(file: NSData, fileID : String){
+        let fileManager = NSFileManager.defaultManager()
+        var paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String
+        var filePathToWrite = "\(paths)/encrypted_\(selectedFile)"
+        println("filePathToWrite")
+        
+        fileManager.createFileAtPath(filePathToWrite, contents: file, attributes: nil)
+    }
+    
+    func getDataFromFile(filename: String) -> NSData {
+        var paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String
+        var getDataPath = paths.stringByAppendingPathComponent(filename)
+        let selectedData = NSData(contentsOfFile: getDataPath, options: NSDataReadingOptions.DataReadingUncached, error: nil)
+        return selectedData!
+    }
+    /*
+    func encryptFile(targetFile: NSData, key: String, iv:String) -> NSData {
+        
+        let keyData :NSData = key.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)!
+        let ivData :NSData = iv.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)!
+        
+        let encryptedData :NSData = targetFile.encrypt(Cipher.AES(key: keyData, iv: ivData, blockMode: CipherBlockMode.CBC))!
+        return encryptedData
+        
+    }
+    */
+    func randomIVGenerator() -> String {
         var arr : [String] = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","0","1","2","3","4","5","6","7","8","9"]
         
-        var randomStringKey : String = ""
+        var randomStringIV : String = ""
         
         var arrSize = arr.count
         
         for i in 0 ..< 32 {
             var randomIndex : Int = Int(arc4random()) % arrSize
-            randomStringKey = randomStringKey + arr[randomIndex]
+            randomStringIV = randomStringIV + arr[randomIndex]
         }
         
-        print ("\(randomStringKey)")
+        print ("\(randomStringIV)")
         
-        return randomStringKey
+        return randomStringIV
     }
     
     
-    func postToServerFunction(randomStringKey : String, xCoordinate : Double, yCoordinate:Double) -> String {
+    func postToServerFunction(randomStringIV : String, xCoordinate : Double, yCoordinate:Double) -> String {
         println("let's post")
         var url: NSURL = NSURL(string: "http://54.200.204.64:5000/hide")!
         var request:NSMutableURLRequest = NSMutableURLRequest(URL:url)
         var fileID : NSString!
-        let password = "password"
         var requestDictionary = [
             "xCoordinate" : "\(xCoordinate)",
             "yCoordinate" : "\(yCoordinate)",
-            "key" : "\(randomStringKey)",
-            "password" : "\(password)"
+            "iv" : "\(randomStringIV)"
         ]
         
         println("\(requestDictionary)")
@@ -69,13 +124,17 @@ class HideViewController: UIViewController {
         
         request.HTTPMethod = "POST"
         request.HTTPBody = bodyData
-        NSURLConnection(request:  request, delegate: self, startImmediately: true)
-        NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { (response: NSURLResponse!, data: NSData!, error: NSError!) -> Void in
+        /*NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) { (response: NSURLResponse!, data: NSData!, error: NSError!) -> Void in
             var err : NSError
             fileID = NSString(data: data, encoding: NSUTF8StringEncoding)!
             println("\(fileID)")
-        }
-        return "error"
+        }*/
+        var response: NSURLResponse?
+        let urlData = NSURLConnection.sendSynchronousRequest(request, returningResponse: &response, error: &error)
+
+        fileID = NSString(data: urlData!, encoding: NSUTF8StringEncoding)
+        print ("\(fileID)")
+        return fileID
     }
     
     
