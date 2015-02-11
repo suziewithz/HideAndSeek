@@ -7,7 +7,7 @@
 //
 
 import UIKit
-//import CryptoSwift
+import CryptoSwift
 
 extension String  {
     var md5: String! {
@@ -49,8 +49,8 @@ class HideViewController: UIViewController {
         
         //
         
-        //let selectedData = getDataFromFile(selectedFile)
-        //let encryptedData = encryptFile(selectedData, key: password, iv: iv)
+        let selectedData = getDataFromFile(selectedFile)
+        let encryptedData = encryptFile(selectedData, key: password, iv: iv)
         
         
 
@@ -76,7 +76,7 @@ class HideViewController: UIViewController {
         let selectedData = NSData(contentsOfFile: getDataPath, options: NSDataReadingOptions.DataReadingUncached, error: nil)
         return selectedData!
     }
-    /*
+    
     func encryptFile(targetFile: NSData, key: String, iv:String) -> NSData {
         
         let keyData :NSData = key.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)!
@@ -86,7 +86,7 @@ class HideViewController: UIViewController {
         return encryptedData
         
     }
-    */
+    
     func randomIVGenerator() -> String {
         var arr : [String] = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","0","1","2","3","4","5","6","7","8","9"]
         
