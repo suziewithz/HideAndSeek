@@ -156,7 +156,70 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YW6-Dv-5RI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1980" y="450"/>
+            <point key="canvasLocation" x="2066" y="636"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="fyR-9x-i2c">
+            <objects>
+                <viewController id="8Sk-Rf-3W4" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hN1-Dd-mAj"/>
+                        <viewControllerLayoutGuide type="bottom" id="vOG-d5-ME3"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kAw-Dj-pC8">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="file" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yjA-gX-Ede">
+                                <rect key="frame" x="289" y="118" width="22" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gJm-KI-fUy">
+                                <rect key="frame" x="243" y="520" width="114" height="30"/>
+                                <state key="normal" title="Go back to main">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="you hided" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g1H-2c-KLv">
+                                <rect key="frame" x="262" y="67" width="76" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="in this area" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FnG-sb-kQ4">
+                                <rect key="frame" x="258" y="169" width="84" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="In6-2n-d8W">
+                                <rect key="frame" x="200" y="220" width="200" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="Cpc-De-yPW"/>
+                                    <constraint firstAttribute="width" constant="200" id="Svy-sQ-noA"/>
+                                </constraints>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="In6-2n-d8W" secondAttribute="centerX" id="2dn-fH-a1r"/>
+                            <constraint firstItem="In6-2n-d8W" firstAttribute="top" secondItem="hN1-Dd-mAj" secondAttribute="bottom" constant="200" id="NEU-eg-QtO"/>
+                            <constraint firstItem="vOG-d5-ME3" firstAttribute="top" secondItem="gJm-KI-fUy" secondAttribute="bottom" constant="50" id="Twq-SQ-DdF"/>
+                            <constraint firstItem="FnG-sb-kQ4" firstAttribute="top" secondItem="yjA-gX-Ede" secondAttribute="bottom" constant="30" id="aCK-8f-otS"/>
+                            <constraint firstItem="yjA-gX-Ede" firstAttribute="top" secondItem="g1H-2c-KLv" secondAttribute="bottom" constant="30" id="aYx-zY-eug"/>
+                            <constraint firstAttribute="centerX" secondItem="gJm-KI-fUy" secondAttribute="centerX" id="bC2-dj-3k2"/>
+                            <constraint firstAttribute="centerX" secondItem="yjA-gX-Ede" secondAttribute="centerX" id="ebo-9R-7me"/>
+                            <constraint firstAttribute="centerX" secondItem="g1H-2c-KLv" secondAttribute="centerX" id="nJj-D2-pSe"/>
+                            <constraint firstAttribute="centerX" secondItem="FnG-sb-kQ4" secondAttribute="centerX" id="vaT-mN-HLF"/>
+                            <constraint firstItem="In6-2n-d8W" firstAttribute="top" secondItem="FnG-sb-kQ4" secondAttribute="bottom" constant="30" id="ysQ-ok-Xrl"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GYs-hV-hGq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2903" y="1117"/>
         </scene>
         <!--Select File-->
         <scene sceneID="hiZ-1J-KPE">
@@ -225,7 +288,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sCO-MN-9Ch" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1980" y="1789"/>
+            <point key="canvasLocation" x="2066" y="1713"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="3C9-lB-kyA">
