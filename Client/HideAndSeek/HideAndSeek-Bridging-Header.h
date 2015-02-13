@@ -4,4 +4,8 @@
 
 #import <GoogleMaps/GoogleMaps.h>
 
-#import <CommonCrypto/CommonCrypto.h>
+
+#import <CommonCrypto/CommonKeyDerivation.h>
+
+#include <CommonCrypto/CommonCryptor.h>
+

@@ -32,6 +32,7 @@
 		79DBF9F81A84BD2400116EC7 /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 79DBF9F71A84BD2400116EC7 /* GoogleMaps.bundle */; };
 		79DBF9FA1A84C2B900116EC7 /* SeekViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DBF9F91A84C2B900116EC7 /* SeekViewController.swift */; };
 		79E1A45A1A8896FD00F6F44F /* SelectFileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E1A4591A8896FD00F6F44F /* SelectFileViewController.swift */; };
+		79FE14801A8C83B7003DBDBD /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79FE147F1A8C83B7003DBDBD /* Security.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,23 +43,23 @@
 			remoteGlobalIDString = 799384971A8357A5004420B8;
 			remoteInfo = HideAndSeek;
 		};
-		79FED0811A8A173700AEE7D5 /* PBXContainerItemProxy */ = {
+		79E2A4051A8B363F001198EB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 79FED07C1A8A173700AEE7D5 /* CryptoSwift.xcodeproj */;
+			containerPortal = 79E2A4001A8B363F001198EB /* CryptoSwift.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 754BE45519693E190098E6F3;
 			remoteInfo = CryptoSwift;
 		};
-		79FED0831A8A173700AEE7D5 /* PBXContainerItemProxy */ = {
+		79E2A4071A8B363F001198EB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 79FED07C1A8A173700AEE7D5 /* CryptoSwift.xcodeproj */;
+			containerPortal = 79E2A4001A8B363F001198EB /* CryptoSwift.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 754BE46019693E190098E6F3;
 			remoteInfo = CryptoSwiftTests;
 		};
-		79FED0851A8A174100AEE7D5 /* PBXContainerItemProxy */ = {
+		79E2A40E1A8B382A001198EB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 79FED07C1A8A173700AEE7D5 /* CryptoSwift.xcodeproj */;
+			containerPortal = 79E2A4001A8B363F001198EB /* CryptoSwift.xcodeproj */;
 			proxyType = 1;
 			remoteGlobalIDString = 754BE45419693E190098E6F3;
 			remoteInfo = CryptoSwift;
@@ -96,7 +97,8 @@
 		79DBF9F71A84BD2400116EC7 /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
 		79DBF9F91A84C2B900116EC7 /* SeekViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeekViewController.swift; sourceTree = "<group>"; };
 		79E1A4591A8896FD00F6F44F /* SelectFileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectFileViewController.swift; sourceTree = "<group>"; };
-		79FED07C1A8A173700AEE7D5 /* CryptoSwift.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = CryptoSwift.xcodeproj; sourceTree = "<group>"; };
+		79E2A4001A8B363F001198EB /* CryptoSwift.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CryptoSwift.xcodeproj; path = CryptoSwift/CryptoSwift.xcodeproj; sourceTree = "<group>"; };
+		79FE147F1A8C83B7003DBDBD /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				79FE14801A8C83B7003DBDBD /* Security.framework in Frameworks */,
 				799384DE1A835B8F004420B8 /* SystemConfiguration.framework in Frameworks */,
 				799384DC1A835B89004420B8 /* QuartzCore.framework in Frameworks */,
 				799384DA1A835B82004420B8 /* OpenGLES.framework in Frameworks */,
@@ -152,7 +155,6 @@
 		7993849A1A8357A5004420B8 /* HideAndSeek */ = {
 			isa = PBXGroup;
 			children = (
-				79FED07C1A8A173700AEE7D5 /* CryptoSwift.xcodeproj */,
 				79DBF9F91A84C2B900116EC7 /* SeekViewController.swift */,
 				7993849D1A8357A5004420B8 /* AppDelegate.swift */,
 				7993849F1A8357A5004420B8 /* ViewController.swift */,
@@ -197,6 +199,8 @@
 		799384BE1A835A34004420B8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				79FE147F1A8C83B7003DBDBD /* Security.framework */,
+				79E2A4001A8B363F001198EB /* CryptoSwift.xcodeproj */,
 				799384DD1A835B8F004420B8 /* SystemConfiguration.framework */,
 				799384DB1A835B89004420B8 /* QuartzCore.framework */,
 				799384D91A835B82004420B8 /* OpenGLES.framework */,
@@ -215,11 +219,11 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		79FED07D1A8A173700AEE7D5 /* Products */ = {
+		79E2A4011A8B363F001198EB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				79FED0821A8A173700AEE7D5 /* CryptoSwift.framework */,
-				79FED0841A8A173700AEE7D5 /* CryptoSwiftTests.xctest */,
+				79E2A4061A8B363F001198EB /* CryptoSwift.framework */,
+				79E2A4081A8B363F001198EB /* CryptoSwiftTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -238,7 +242,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				79FED0861A8A174100AEE7D5 /* PBXTargetDependency */,
+				79E2A40F1A8B382A001198EB /* PBXTargetDependency */,
 			);
 			name = HideAndSeek;
 			productName = HideAndSeek;
@@ -294,8 +298,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 79FED07D1A8A173700AEE7D5 /* Products */;
-					ProjectRef = 79FED07C1A8A173700AEE7D5 /* CryptoSwift.xcodeproj */;
+					ProductGroup = 79E2A4011A8B363F001198EB /* Products */;
+					ProjectRef = 79E2A4001A8B363F001198EB /* CryptoSwift.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -307,18 +311,18 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		79FED0821A8A173700AEE7D5 /* CryptoSwift.framework */ = {
+		79E2A4061A8B363F001198EB /* CryptoSwift.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = CryptoSwift.framework;
-			remoteRef = 79FED0811A8A173700AEE7D5 /* PBXContainerItemProxy */;
+			remoteRef = 79E2A4051A8B363F001198EB /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		79FED0841A8A173700AEE7D5 /* CryptoSwiftTests.xctest */ = {
+		79E2A4081A8B363F001198EB /* CryptoSwiftTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = CryptoSwiftTests.xctest;
-			remoteRef = 79FED0831A8A173700AEE7D5 /* PBXContainerItemProxy */;
+			remoteRef = 79E2A4071A8B363F001198EB /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -375,10 +379,10 @@
 			target = 799384971A8357A5004420B8 /* HideAndSeek */;
 			targetProxy = 799384AE1A8357A6004420B8 /* PBXContainerItemProxy */;
 		};
-		79FED0861A8A174100AEE7D5 /* PBXTargetDependency */ = {
+		79E2A40F1A8B382A001198EB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = CryptoSwift;
-			targetProxy = 79FED0851A8A174100AEE7D5 /* PBXContainerItemProxy */;
+			targetProxy = 79E2A40E1A8B382A001198EB /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -443,6 +447,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = "../**";
 			};
 			name = Debug;
 		};
@@ -478,6 +483,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = "../**";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -494,9 +500,10 @@
 				INFOPLIST_FILE = HideAndSeek/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_INCLUDE_PATHS = "CryptoSwift/**";
+				SWIFT_INCLUDE_PATHS = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "HideAndSeek/HideAndSeek-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Debug;
 		};
@@ -512,8 +519,9 @@
 				INFOPLIST_FILE = HideAndSeek/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_INCLUDE_PATHS = "CryptoSwift/**";
+				SWIFT_INCLUDE_PATHS = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "HideAndSeek/HideAndSeek-Bridging-Header.h";
+				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Release;
 		};
