@@ -13,7 +13,6 @@
 		<key>4215DAD04C8224ABAD388ECF5125505A2D61A387</key>
 		<string>https://github.com/suziewithz/HideAndSeek.git</string>
 		<key>C3D8ED1CB28D809ADCE2C0DE74935E8A502ACD53</key>
-		<string>https://github.com/krzyzanowskim/CryptoSwift.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>Client/HideAndSeek.xcodeproj</string>
@@ -22,7 +21,6 @@
 		<key>4215DAD04C8224ABAD388ECF5125505A2D61A387</key>
 		<string>../../..</string>
 		<key>C3D8ED1CB28D809ADCE2C0DE74935E8A502ACD53</key>
-		<string>../../../CryptoSwift</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/suziewithz/HideAndSeek.git</string>
@@ -38,7 +36,6 @@
 			<key>IDESourceControlWCCIdentifierKey</key>
 			<string>C3D8ED1CB28D809ADCE2C0DE74935E8A502ACD53</string>
 			<key>IDESourceControlWCCName</key>
-			<string>CryptoSwift</string>
 		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>

@@ -52,27 +52,54 @@ class SeekViewController: UIViewController {
     var yCoordinate : Double!
     var selectedFile : String!
     
+    
+    
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var selectedFileLabel: UILabel!
+    
+    @IBAction func tapRecognized(sender: AnyObject) {
+        DismissKeyboard()
+    }
+    
+    @IBAction func seekPressed(sender: AnyObject) {
+        activityIndicator.startAnimating()
+        if (passwordTextField.text.isEmpty){
+            var refreshAlert = UIAlertController(title: "wrong password", message: "please type password", preferredStyle: UIAlertControllerStyle.Alert)
+            
+            refreshAlert.addAction(UIAlertAction(title: "dismiss", style: .Default, handler: { (action: UIAlertAction!) in
+                println("no password")
+            }))
+            activityIndicator.stopAnimating()
+            presentViewController(refreshAlert, animated: true, completion: nil)
+        }
+        else {
+            let password = passwordTextField.text
+            let encryptedPassword = password.md5
+            
+            let selectedData = getDataFromFile(selectedFile)
+            let fileID = getFileIDFromData(selectedData)
+            let targetData : NSData = extractFileIDFromData(selectedData)
+            
+            let iv = sendToServerFunction(fileID, xCoordinate: xCoordinate, yCoordinate: yCoordinate)
+            
+            let decryptedData = selectedData.AES256DecryptDataWithKey(encryptedPassword!, iv: iv)
+            
+            storeDecryptedData(decryptedData, fileID: fileID)
+        }
+        activityIndicator.stopAnimating()
+    }
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
         
-        let iv = "zlkxA4yn0qxrlqKqPytyuYghUBDv0iZA"
-        let fileID = "fileID"
-        
         selectedFileLabel.text = "You selected \(selectedFile)"
         
         
-        let password = "password"
-        let encryptedPassword = password.md5()
         
-        let selectedData = getDataFromFile(selectedFile)
         
-        //let encryptedData = encryptFile(selectedData, key: encryptedPassword, iv: iv)
-        let decryptedData = selectedData.AES256DecryptDataWithKey(encryptedPassword!, iv: iv)
         
-        storeEncryptedData(decryptedData, fileID: fileID)
     }
 
     override func didReceiveMemoryWarning() {
@@ -81,7 +108,7 @@ class SeekViewController: UIViewController {
     }
     
     
-    func storeEncryptedData(file: NSData, fileID : String){
+    func storeDecryptedData(file: NSData, fileID : String){
         let fileManager = NSFileManager.defaultManager()
         var paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String
         var filePathToWrite = "\(paths)/decrypted_\(selectedFile)"
@@ -97,5 +124,53 @@ class SeekViewController: UIViewController {
         return selectedData!
     }
 
+    func sendToServerFunction(fileID : String, xCoordinate : Double, yCoordinate:Double) -> String {
+        var url: NSURL = NSURL(string: "http://54.200.204.64:5000/seek")!
+        var request:NSMutableURLRequest = NSMutableURLRequest(URL:url)
+        var requestDictionary = [
+            "xCoordinate" : "\(xCoordinate)",
+            "yCoordinate" : "\(yCoordinate)",
+            "fileID" : "\(fileID)"
+        ]
+        
+        println("\(requestDictionary)")
+        
+        
+        var error: NSError?
+        let bodyData = NSJSONSerialization.dataWithJSONObject(requestDictionary, options: nil, error: &error)
+        
+        request.HTTPMethod = "POST"
+        request.HTTPBody = bodyData
+        
+        var response: NSURLResponse?
+        let urlData = NSURLConnection.sendSynchronousRequest(request, returningResponse: &response, error: &error)
+        
+        let iv :NSString! = NSString(data: urlData!, encoding: NSUTF8StringEncoding)
+        NSLog ("\(iv)")
+        return iv
+    }
+    
+    func getFileIDFromData (targetData : NSData) -> String {
+        let fileIdRange = NSMakeRange(targetData.length - 16, 16)
+        NSLog("\(fileIdRange)")
+        let bufferData :NSMutableData = NSMutableData(length: 16)!
+        var bufferPointer = UnsafeMutablePointer<UInt8>(bufferData.mutableBytes)
+        targetData.getBytes(bufferPointer, range: fileIdRange)
+        NSLog("arr : \(bufferData)")
+        let fileID : NSString! = NSString(data: bufferData, encoding: NSUTF8StringEncoding)
+        NSLog("fileID: \(fileID)")
+        return fileID!
+    }
+    
+    func extractFileIDFromData (targetData : NSData) -> NSData {
+        let bufferData :NSMutableData = NSMutableData(length: targetData.length - 16)!
+        var bufferPointer = UnsafeMutablePointer<UInt8>(bufferData.mutableBytes)
+        targetData.getBytes(bufferPointer, range: NSMakeRange(0, targetData.length - 16))
+        return bufferData
+    }
+    func DismissKeyboard(){
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        passwordTextField.endEditing(true)
+    }
 
 }

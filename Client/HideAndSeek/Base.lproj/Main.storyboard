@@ -57,8 +57,10 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zKE-eg-988">
                                 <rect key="frame" x="254" y="520" width="32" height="30"/>
+                                <color key="tintColor" red="0.99215686270000003" green="0.75686274509999996" blue="0.035294117649999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Hide">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" red="0.99215686270000003" green="0.75686274509999996" blue="0.035294117649999998" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="hideButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="h08-Xp-rM1"/>
@@ -67,7 +69,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="loN-VZ-jvD">
                                 <rect key="frame" x="313" y="520" width="35" height="30"/>
                                 <state key="normal" title="Seek">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="seekButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="59F-V4-hxX"/>
@@ -136,32 +138,114 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Kd-c9-flZ">
-                                <rect key="frame" x="279" y="114" width="42" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="filename" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Kd-c9-flZ">
+                                <rect key="frame" x="268" y="114" width="65" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hZx-zV-auZ">
+                                <rect key="frame" x="275" y="285" width="150" height="30"/>
+                                <color key="tintColor" red="0.99215686270000003" green="0.75686274509999996" blue="0.035294117649999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="Isb-bT-1CF"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gff-HP-NYh">
+                                <rect key="frame" x="275" y="355" width="150" height="30"/>
+                                <color key="tintColor" red="0.99215686270000003" green="0.75686274509999996" blue="0.035294117649999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="2Wy-iU-Qwo"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="password : " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AD9-sU-Byh">
+                                <rect key="frame" x="195" y="293" width="60" height="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="validate password :" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NJP-mD-uGJ">
+                                <rect key="frame" x="155" y="362" width="100" height="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Cy-Kz-q0u">
+                                <rect key="frame" x="252" y="500" width="96" height="30"/>
+                                <color key="tintColor" red="0.99215686270000003" green="0.75686274509999996" blue="0.035294117649999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Ready to hide">
+                                    <color key="titleColor" red="0.99215686270000003" green="0.75686274509999996" blue="0.035294117649999998" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="donePressed:" destination="iQQ-0j-NNj" eventType="touchUpInside" id="1JI-qg-HGK"/>
+                                </connections>
+                            </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="cxy-YW-SvH">
+                                <rect key="frame" x="280" y="280" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="7K7-yN-O5l"/>
+                                    <constraint firstAttribute="height" constant="40" id="f0h-5p-YcP"/>
+                                </constraints>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
+                            <constraint firstItem="gff-HP-NYh" firstAttribute="leading" secondItem="NJP-mD-uGJ" secondAttribute="trailing" constant="20" id="22X-76-Rdp"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="gff-HP-NYh" secondAttribute="trailing" constant="200" id="3rE-fz-eFC"/>
+                            <constraint firstAttribute="centerX" secondItem="cxy-YW-SvH" secondAttribute="centerX" id="Fec-7h-zvF"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="hZx-zV-auZ" secondAttribute="trailing" constant="200" id="GBB-5g-H99"/>
+                            <constraint firstItem="NJP-mD-uGJ" firstAttribute="top" secondItem="AD9-sU-Byh" secondAttribute="bottom" constant="55" id="Orj-h8-GBO"/>
+                            <constraint firstItem="Euf-hI-Kpy" firstAttribute="top" secondItem="4Cy-Kz-q0u" secondAttribute="bottom" constant="70" id="PRT-Fv-Ohs"/>
+                            <constraint firstAttribute="centerY" secondItem="cxy-YW-SvH" secondAttribute="centerY" id="U7m-dP-udo"/>
                             <constraint firstAttribute="centerX" secondItem="2Kd-c9-flZ" secondAttribute="centerX" id="UEm-c2-zzj"/>
+                            <constraint firstAttribute="centerX" secondItem="hZx-zV-auZ" secondAttribute="centerX" constant="-50" id="YkR-z5-o10"/>
+                            <constraint firstItem="hZx-zV-auZ" firstAttribute="leading" secondItem="AD9-sU-Byh" secondAttribute="trailing" constant="20" id="bUV-22-ODx"/>
+                            <constraint firstAttribute="centerY" secondItem="AD9-sU-Byh" secondAttribute="centerY" id="eZR-FS-CSE"/>
+                            <constraint firstItem="gff-HP-NYh" firstAttribute="top" secondItem="hZx-zV-auZ" secondAttribute="bottom" constant="40" id="eeK-D1-0iH"/>
+                            <constraint firstAttribute="centerX" secondItem="4Cy-Kz-q0u" secondAttribute="centerX" id="hXd-mr-Xve"/>
+                            <constraint firstAttribute="centerX" secondItem="gff-HP-NYh" secondAttribute="centerX" constant="-50" id="hpU-kv-L9H"/>
                             <constraint firstItem="2Kd-c9-flZ" firstAttribute="top" secondItem="Nf7-o9-YJ3" secondAttribute="bottom" constant="50" id="pqo-Vf-gut"/>
+                            <constraint firstAttribute="centerY" secondItem="hZx-zV-auZ" secondAttribute="centerY" id="z5u-cI-0OS"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="GBB-5g-H99"/>
+                                <exclude reference="3rE-fz-eFC"/>
+                            </mask>
+                        </variation>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="S1k-wi-rcm" appends="YES" id="wGw-Cg-sbe"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" title="Let's hide" id="JlS-v0-5gX"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="cxy-YW-SvH" id="DrQ-cL-crs"/>
+                        <outlet property="doneButton" destination="4Cy-Kz-q0u" id="UVO-qA-Bkv"/>
+                        <outlet property="passwordTextField" destination="hZx-zV-auZ" id="gKi-gf-7FY"/>
+                        <outlet property="retypeTextField" destination="gff-HP-NYh" id="gGQ-HW-iSb"/>
                         <outlet property="selectedFileLabel" destination="2Kd-c9-flZ" id="fHw-QX-bmf"/>
+                        <segue destination="8Sk-Rf-3W4" kind="modal" identifier="PushToHideResult" id="5ge-ib-RBj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YW6-Dv-5RI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="S1k-wi-rcm">
+                    <connections>
+                        <action selector="tapRecognized:" destination="iQQ-0j-NNj" id="afg-nZ-uUT"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2066" y="636"/>
         </scene>
-        <!--View Controller-->
+        <!--Hide Result View Controller-->
         <scene sceneID="fyR-9x-i2c">
             <objects>
-                <viewController id="8Sk-Rf-3W4" sceneMemberID="viewController">
+                <viewController id="8Sk-Rf-3W4" customClass="HideResultViewController" customModule="HideAndSeek" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hN1-Dd-mAj"/>
                         <viewControllerLayoutGuide type="bottom" id="vOG-d5-ME3"/>
@@ -171,7 +255,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="file" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yjA-gX-Ede">
-                                <rect key="frame" x="289" y="118" width="22" height="21"/>
+                                <rect key="frame" x="289" y="94" width="22" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -179,47 +263,54 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gJm-KI-fUy">
                                 <rect key="frame" x="243" y="520" width="114" height="30"/>
                                 <state key="normal" title="Go back to main">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" red="0.99215686270000003" green="0.75686274509999996" blue="0.035294117649999998" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="you hided" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g1H-2c-KLv">
-                                <rect key="frame" x="262" y="67" width="76" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="you safely hided" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g1H-2c-KLv">
+                                <rect key="frame" x="255" y="49" width="91" height="15"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="in this area" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FnG-sb-kQ4">
-                                <rect key="frame" x="258" y="169" width="84" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="270" y="145" width="61" height="15"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="In6-2n-d8W">
-                                <rect key="frame" x="200" y="220" width="200" height="200"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZZx-5X-8HS" customClass="GMSMapView">
+                                <rect key="frame" x="200" y="200" width="200" height="200"/>
+                                <color key="backgroundColor" red="1" green="0.82672311379999996" blue="0.05124533723" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="Cpc-De-yPW"/>
-                                    <constraint firstAttribute="width" constant="200" id="Svy-sQ-noA"/>
+                                    <constraint firstAttribute="height" constant="200" id="9NO-Uc-avO"/>
+                                    <constraint firstAttribute="width" constant="200" id="AVc-bJ-4qe"/>
                                 </constraints>
-                            </mapView>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="centerX" secondItem="In6-2n-d8W" secondAttribute="centerX" id="2dn-fH-a1r"/>
-                            <constraint firstItem="In6-2n-d8W" firstAttribute="top" secondItem="hN1-Dd-mAj" secondAttribute="bottom" constant="200" id="NEU-eg-QtO"/>
+                            <constraint firstAttribute="centerY" secondItem="ZZx-5X-8HS" secondAttribute="centerY" id="44Y-la-qtU"/>
+                            <constraint firstItem="ZZx-5X-8HS" firstAttribute="top" secondItem="FnG-sb-kQ4" secondAttribute="bottom" constant="40" id="667-Hq-0Eo"/>
                             <constraint firstItem="vOG-d5-ME3" firstAttribute="top" secondItem="gJm-KI-fUy" secondAttribute="bottom" constant="50" id="Twq-SQ-DdF"/>
                             <constraint firstItem="FnG-sb-kQ4" firstAttribute="top" secondItem="yjA-gX-Ede" secondAttribute="bottom" constant="30" id="aCK-8f-otS"/>
                             <constraint firstItem="yjA-gX-Ede" firstAttribute="top" secondItem="g1H-2c-KLv" secondAttribute="bottom" constant="30" id="aYx-zY-eug"/>
                             <constraint firstAttribute="centerX" secondItem="gJm-KI-fUy" secondAttribute="centerX" id="bC2-dj-3k2"/>
                             <constraint firstAttribute="centerX" secondItem="yjA-gX-Ede" secondAttribute="centerX" id="ebo-9R-7me"/>
+                            <constraint firstAttribute="centerX" secondItem="ZZx-5X-8HS" secondAttribute="centerX" id="mLz-Ld-fdI"/>
                             <constraint firstAttribute="centerX" secondItem="g1H-2c-KLv" secondAttribute="centerX" id="nJj-D2-pSe"/>
                             <constraint firstAttribute="centerX" secondItem="FnG-sb-kQ4" secondAttribute="centerX" id="vaT-mN-HLF"/>
-                            <constraint firstItem="In6-2n-d8W" firstAttribute="top" secondItem="FnG-sb-kQ4" secondAttribute="bottom" constant="30" id="ysQ-ok-Xrl"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="hNx-VK-PwJ"/>
+                    <connections>
+                        <outlet property="mapView" destination="ZZx-5X-8HS" id="1QQ-ah-sKd"/>
+                        <outlet property="selectedFileLabel" destination="yjA-gX-Ede" id="Dq2-bL-UHz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GYs-hV-hGq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2903" y="1117"/>
+            <point key="canvasLocation" x="2831" y="636"/>
         </scene>
         <!--Select File-->
         <scene sceneID="hiZ-1J-KPE">
@@ -274,19 +365,68 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BCT-dS-XhO">
+                                <rect key="frame" x="275" y="285" width="150" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="ayR-nx-cAS"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="password : " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Qx-9f-oRh">
+                                <rect key="frame" x="175" y="293" width="60" height="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="egX-kH-x7k">
+                                <rect key="frame" x="251" y="500" width="98" height="30"/>
+                                <state key="normal" title="Ready to seek">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="seekPressed:" destination="P5c-Mo-5Tc" eventType="touchUpInside" id="Vgh-wL-GAA"/>
+                                </connections>
+                            </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="RDB-qq-S3j">
+                                <rect key="frame" x="301" y="353" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="k0h-s8-6dv"/>
+                                    <constraint firstAttribute="height" constant="50" id="ruu-hP-Kay"/>
+                                </constraints>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
+                            <constraint firstAttribute="centerX" secondItem="egX-kH-x7k" secondAttribute="centerX" id="1Uu-x7-pL8"/>
+                            <constraint firstAttribute="centerY" secondItem="RDB-qq-S3j" secondAttribute="centerY" id="Emp-FC-C0T"/>
+                            <constraint firstItem="zJN-MY-Ugq" firstAttribute="top" secondItem="egX-kH-x7k" secondAttribute="bottom" constant="70" id="UHy-Tb-2o7"/>
+                            <constraint firstAttribute="centerY" secondItem="BCT-dS-XhO" secondAttribute="centerY" id="YEU-3h-vOW"/>
                             <constraint firstAttribute="centerX" secondItem="LfU-1B-YQh" secondAttribute="centerX" id="aPs-IW-er5"/>
+                            <constraint firstAttribute="centerY" secondItem="7Qx-9f-oRh" secondAttribute="centerY" id="afh-K1-bVH"/>
+                            <constraint firstItem="BCT-dS-XhO" firstAttribute="leading" secondItem="7Qx-9f-oRh" secondAttribute="trailing" constant="40" id="fh1-2d-lFw"/>
+                            <constraint firstAttribute="centerX" secondItem="BCT-dS-XhO" secondAttribute="centerX" constant="-50" id="hMs-fp-cGv"/>
+                            <constraint firstAttribute="centerX" secondItem="RDB-qq-S3j" secondAttribute="centerX" id="hxt-fI-8uV"/>
                             <constraint firstItem="LfU-1B-YQh" firstAttribute="top" secondItem="SaL-8M-tDU" secondAttribute="bottom" constant="50" id="nB8-Dg-naT"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="8ca-K8-HxJ" appends="YES" id="1W2-zc-1u2"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" title="Let's seek" id="Ymt-J7-t8V"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="RDB-qq-S3j" id="gLD-hh-pQn"/>
+                        <outlet property="passwordTextField" destination="BCT-dS-XhO" id="NNm-S4-6nJ"/>
                         <outlet property="selectedFileLabel" destination="LfU-1B-YQh" id="4c9-A7-pcN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sCO-MN-9Ch" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="8ca-K8-HxJ">
+                    <connections>
+                        <action selector="tapRecognized:" destination="P5c-Mo-5Tc" id="8Rz-8q-CBY"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2066" y="1713"/>
         </scene>
@@ -309,4 +449,5 @@
             <point key="canvasLocation" x="663" y="-243"/>
         </scene>
     </scenes>
+    <color key="tintColor" red="0.96862745100000003" green="0.29411764709999999" blue="0.47843137250000001" alpha="1" colorSpace="calibratedRGB"/>
 </document>

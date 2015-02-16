@@ -19,12 +19,12 @@ class SelectFileViewController: UIViewController, UITableViewDelegate, UITableVi
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
-                let fileManager:NSFileManager = NSFileManager.defaultManager()
+        let fileManager:NSFileManager = NSFileManager.defaultManager()
         fileList = listFilesFromDocumentsFolder()
 
         let count = fileList.count
         var isDir:Bool = true;
-        
+        /*
         for var i:Int = 0; i < count; i++
         {
             if fileManager.fileExistsAtPath(fileList[i]) != true
@@ -32,7 +32,7 @@ class SelectFileViewController: UIViewController, UITableViewDelegate, UITableVi
                 println("\(fileList[i])")
             }
         }
-        
+        */
         // Do any additional setup after loading the view.
     }
 
