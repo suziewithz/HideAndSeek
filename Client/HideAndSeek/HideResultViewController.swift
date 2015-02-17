@@ -19,8 +19,15 @@ class HideResultViewController: UIViewController, CLLocationManagerDelegate {
     var mapPinPoint: GMSMarker!
     let locationManager = CLLocationManager()
     
+    @IBAction func backToRoot(unwindSegue: UIStoryboardSegue) {
+        
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
+        self.navigationController?.popToRootViewControllerAnimated(true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
         selectedFileLabel.text = selectedFile
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
@@ -57,4 +64,6 @@ class HideResultViewController: UIViewController, CLLocationManagerDelegate {
             locationManager.stopUpdatingLocation()
         }
     }
+    
+    
 }

@@ -19,6 +19,8 @@ class SelectFileViewController: UIViewController, UITableViewDelegate, UITableVi
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
+        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Action, target: self, action: nil)
         let fileManager:NSFileManager = NSFileManager.defaultManager()
         fileList = listFilesFromDocumentsFolder()
 
@@ -82,7 +84,17 @@ class SelectFileViewController: UIViewController, UITableViewDelegate, UITableVi
             self.performSegueWithIdentifier("PushDataToHide", sender: self)
         }
         else {
-            self.performSegueWithIdentifier("PushDataToSeek", sender: self)
+            if checkEncrypted(selectedFile) == true {
+                self.performSegueWithIdentifier("PushDataToSeek", sender: self)
+            }
+            else {
+                var refreshAlert = UIAlertController(title: "It's not encrypted", message: "file was not encrypted", preferredStyle: UIAlertControllerStyle.Alert)
+                
+                refreshAlert.addAction(UIAlertAction(title: "dismiss", style: .Default, handler: { (action: UIAlertAction!) in
+                    println("user chose unecrypted file.")
+                }))
+                presentViewController(refreshAlert, animated: true, completion: nil)
+            }
         }
         
     }
@@ -101,5 +113,31 @@ class SelectFileViewController: UIViewController, UITableViewDelegate, UITableVi
             viewController.yCoordinate = self.yCoordinate
             viewController.selectedFile = self.selectedFile
         }
+    }
+    
+    func checkEncrypted(filename:String) -> Bool {
+        let fileData = getDataFromFile(filename)
+        let bufferData :NSMutableData = NSMutableData(length: 11)!
+        var bufferPointer = UnsafeMutablePointer<UInt8>(bufferData.mutableBytes)
+        fileData.getBytes(bufferPointer, range: NSMakeRange(fileData.length - 27, 11))
+        NSLog("arr : \(bufferData)")
+        let verification : NSString! = NSString(data: bufferData, encoding: NSUTF8StringEncoding)
+        if (verification != nil) {
+            if(verification.isEqualToString("hideandseek")){
+                return true
+            }
+            else {
+                return false
+            }
+        }
+        else {
+            return false
+        }
+    }
+    func getDataFromFile(filename: String) -> NSData {
+        var paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String
+        var getDataPath = paths.stringByAppendingPathComponent(filename)
+        let selectedData = NSData(contentsOfFile: getDataPath, options: NSDataReadingOptions.DataReadingUncached, error: nil)
+        return selectedData!
     }
 }

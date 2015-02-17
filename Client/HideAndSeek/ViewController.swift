@@ -23,11 +23,13 @@ class ViewController: UIViewController , CLLocationManagerDelegate{
     
     @IBAction func hideButtonPressed(sender: AnyObject) {
         hideOrSeek = "hide"
+        self.navigationController?.navigationBar.barTintColor = UIColor(red: 243, green: 156, blue: 18, alpha: 0)
         self.performSegueWithIdentifier("PushDataToMedium", sender: self)
     }
     
     @IBAction func seekButtonPressed(sender: AnyObject) {
         hideOrSeek = "seek"
+        self.navigationController?.navigationBar.barTintColor = UIColor(red: 246, green: 36, blue: 89, alpha: 0)
         self.performSegueWithIdentifier("PushDataToMedium", sender: self)
     }
     
@@ -39,7 +41,6 @@ class ViewController: UIViewController , CLLocationManagerDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         xCoordinate = locationManager.location.coordinate.latitude

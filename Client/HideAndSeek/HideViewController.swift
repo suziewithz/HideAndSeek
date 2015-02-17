@@ -121,7 +121,6 @@ class HideViewController: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
         selectedFileLabel.text = "You selected \(selectedFile)"
     }
 
@@ -130,7 +129,9 @@ class HideViewController: UIViewController {
     }
     
     func storeEncryptedData(file: NSData, fileID : String){
-        let resultFile = appendStringToFile(file, targetString: fileID)
+        var resultFile : NSData = file
+        resultFile = appendStringToFile(resultFile, targetString: "hideandseek")
+        resultFile = appendStringToFile(resultFile, targetString: fileID)
         
         let fileManager = NSFileManager.defaultManager()
         var paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String

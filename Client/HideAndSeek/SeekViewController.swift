@@ -86,6 +86,16 @@ class SeekViewController: UIViewController {
             let decryptedData = selectedData.AES256DecryptDataWithKey(encryptedPassword!, iv: iv)
             
             storeDecryptedData(decryptedData, fileID: fileID)
+            
+            var refreshAlert = UIAlertController(title: "decrypted successfully", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
+            
+            refreshAlert.addAction(UIAlertAction(title: "go back to main", style: .Default, handler: { (action: UIAlertAction!) in
+                println("successfully decrepyted. go back to main.")
+                self.navigationController?.popToRootViewControllerAnimated(true)
+            }))
+            presentViewController(refreshAlert, animated: true, completion: nil)
+            
+            
         }
         activityIndicator.stopAnimating()
     }
@@ -163,14 +173,18 @@ class SeekViewController: UIViewController {
     }
     
     func extractFileIDFromData (targetData : NSData) -> NSData {
-        let bufferData :NSMutableData = NSMutableData(length: targetData.length - 16)!
+        let bufferData :NSMutableData = NSMutableData(length: targetData.length - 27)!
         var bufferPointer = UnsafeMutablePointer<UInt8>(bufferData.mutableBytes)
-        targetData.getBytes(bufferPointer, range: NSMakeRange(0, targetData.length - 16))
+        targetData.getBytes(bufferPointer, range: NSMakeRange(0, targetData.length - 27))
         return bufferData
     }
     func DismissKeyboard(){
         //Causes the view (or one of its embedded text fields) to resign the first responder status.
         passwordTextField.endEditing(true)
     }
+    
+    
+    
+    
 
 }
