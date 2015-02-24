@@ -160,7 +160,13 @@ class SelectFileViewController: UIViewController, UITableViewDelegate, UITableVi
             break
         case 1:
             NSLog("Dropbox")
-            DBAccountManager.sharedManager().linkFromController(self)
+            let account = DBAccountManager.sharedManager().linkedAccount
+            if ( account == nil ) {
+                DBAccountManager.sharedManager().linkFromController(self)
+            }
+            else {
+                NSLog("let's import file")
+            }
         case 2:
             NSLog("Google Drive")
         default:
