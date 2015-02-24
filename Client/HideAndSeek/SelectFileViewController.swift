@@ -18,6 +18,11 @@ class SelectFileViewController: UIViewController, UITableViewDelegate, UITableVi
     
     @IBOutlet weak var tableView: UITableView!
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+    }
+
+    
     override func viewDidLoad() {
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Action, target: self, action: "showActionSheet")
@@ -26,16 +31,7 @@ class SelectFileViewController: UIViewController, UITableViewDelegate, UITableVi
 
         let count = fileList.count
         var isDir:Bool = true;
-        /*
-        for var i:Int = 0; i < count; i++
-        {
-            if fileManager.fileExistsAtPath(fileList[i]) != true
-            {
-                println("\(fileList[i])")
-            }
-        }
-        */
-        // Do any additional setup after loading the view.
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -71,7 +67,7 @@ class SelectFileViewController: UIViewController, UITableViewDelegate, UITableVi
         }
         
         //we know that cell is not empty now so we use ! to force unwrapping
-        
+        cell!.editing = true
         cell!.textLabel?.text = self.fileList[indexPath.row]
         
         return cell!
@@ -97,6 +93,37 @@ class SelectFileViewController: UIViewController, UITableViewDelegate, UITableVi
             }
         }
         
+    }
+    
+    func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
+        return UITableViewCellEditingStyle.Delete
+    }
+    
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        // Return false if you do not want the specified item to be editable.
+        return true
+    }
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == .Delete {
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+        } else if editingStyle == .Insert {
+            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
+        }
+    }
+    
+    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]? {
+        
+        var moreRowAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "More", handler:{action, indexpath in
+            println("MORE•ACTION");
+        });
+        moreRowAction.backgroundColor = UIColor(red: 0.298, green: 0.851, blue: 0.3922, alpha: 1.0);
+        
+        var deleteRowAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Delete", handler:{action, indexpath in
+            println("DELETE•ACTION");
+        });
+        
+        return [deleteRowAction, moreRowAction];
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

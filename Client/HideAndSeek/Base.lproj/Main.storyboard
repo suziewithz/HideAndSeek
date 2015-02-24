@@ -334,9 +334,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="zmb-NX-fJv">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="zmb-NX-fJv">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="Bjd-5F-JIe">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Bjd-5F-JIe" id="clj-9K-IqA">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
                                 <sections/>
                                 <connections>
                                     <outlet property="dataSource" destination="YKl-Mm-7rM" id="zIa-Ox-mdc"/>
@@ -345,6 +354,12 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="zmb-NX-fJv" firstAttribute="top" secondItem="1a4-WS-glg" secondAttribute="topMargin" id="6h7-FH-dHx"/>
+                            <constraint firstItem="zmb-NX-fJv" firstAttribute="leading" secondItem="1a4-WS-glg" secondAttribute="leadingMargin" constant="-16" id="aWb-gb-vnL"/>
+                            <constraint firstItem="GJw-Ln-mwj" firstAttribute="top" secondItem="zmb-NX-fJv" secondAttribute="bottom" id="hqc-al-vbw"/>
+                            <constraint firstItem="zmb-NX-fJv" firstAttribute="trailing" secondItem="1a4-WS-glg" secondAttribute="trailingMargin" constant="16" id="uG2-Up-ePf"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Select File" id="06x-tu-YOE"/>
                     <connections>
