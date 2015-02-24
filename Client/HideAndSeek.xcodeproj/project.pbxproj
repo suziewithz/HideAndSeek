@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7918684E1A844F780080E43E /* HideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7918684D1A844F780080E43E /* HideViewController.swift */; };
+		7952B50C1A9C2ADA00385C7F /* Dropbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7952B50B1A9C2ADA00385C7F /* Dropbox.framework */; };
 		7993849E1A8357A5004420B8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7993849D1A8357A5004420B8 /* AppDelegate.swift */; };
 		799384A01A8357A5004420B8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7993849F1A8357A5004420B8 /* ViewController.swift */; };
 		799384A31A8357A5004420B8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 799384A11A8357A5004420B8 /* Main.storyboard */; };
@@ -48,6 +49,7 @@
 
 /* Begin PBXFileReference section */
 		7918684D1A844F780080E43E /* HideViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HideViewController.swift; sourceTree = "<group>"; };
+		7952B50B1A9C2ADA00385C7F /* Dropbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Dropbox.framework; sourceTree = "<group>"; };
 		799384981A8357A5004420B8 /* HideAndSeek.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HideAndSeek.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7993849C1A8357A5004420B8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7993849D1A8357A5004420B8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 				799384D81A835B7D004420B8 /* libz.dylib in Frameworks */,
 				799384D61A835B77004420B8 /* libicucore.dylib in Frameworks */,
 				799384D41A835B70004420B8 /* libc++.dylib in Frameworks */,
+				7952B50C1A9C2ADA00385C7F /* Dropbox.framework in Frameworks */,
 				799384D21A835B68004420B8 /* ImageIO.framework in Frameworks */,
 				799384D01A835B63004420B8 /* GLKit.framework in Frameworks */,
 				799384CE1A835B5D004420B8 /* CoreText.framework in Frameworks */,
@@ -180,8 +183,8 @@
 		799384BE1A835A34004420B8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7952B50B1A9C2ADA00385C7F /* Dropbox.framework */,
 				79FE147F1A8C83B7003DBDBD /* Security.framework */,
-
 				799384DD1A835B8F004420B8 /* SystemConfiguration.framework */,
 				799384DB1A835B89004420B8 /* QuartzCore.framework */,
 				799384D91A835B82004420B8 /* OpenGLES.framework */,
@@ -200,13 +203,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		79E2A4011A8B363F001198EB /* Products */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -221,7 +217,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				79E2A40F1A8B382A001198EB /* PBXTargetDependency */,
 			);
 			name = HideAndSeek;
 			productName = HideAndSeek;
@@ -275,11 +270,6 @@
 			mainGroup = 7993848F1A8357A5004420B8;
 			productRefGroup = 799384991A8357A5004420B8 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 79E2A4011A8B363F001198EB /* Products */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				799384971A8357A5004420B8 /* HideAndSeek */,
@@ -287,10 +277,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		799384961A8357A5004420B8 /* Resources */ = {

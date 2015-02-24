@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SelectFileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
+class SelectFileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIActionSheetDelegate{
 
     var fileList : [String]!
     var hideOrSeek : String!
@@ -20,7 +20,7 @@ class SelectFileViewController: UIViewController, UITableViewDelegate, UITableVi
     
     override func viewDidLoad() {
         
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Action, target: self, action: nil)
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Action, target: self, action: "showActionSheet")
         let fileManager:NSFileManager = NSFileManager.defaultManager()
         fileList = listFilesFromDocumentsFolder()
 
@@ -140,4 +140,34 @@ class SelectFileViewController: UIViewController, UITableViewDelegate, UITableVi
         let selectedData = NSData(contentsOfFile: getDataPath, options: NSDataReadingOptions.DataReadingUncached, error: nil)
         return selectedData!
     }
+    
+    func showActionSheet() {
+        let actionSheet = UIActionSheet()
+        actionSheet.title = "import from..."
+        actionSheet.delegate = self
+        actionSheet.addButtonWithTitle("Cancel")
+        actionSheet.addButtonWithTitle("Dropbox")
+        actionSheet.addButtonWithTitle("Google Drive")
+        actionSheet.cancelButtonIndex = 0
+        actionSheet.showInView(self.view)
+    }
+    
+    func actionSheet(actionSheet: UIActionSheet!, clickedButtonAtIndex buttonIndex: Int)
+    {
+        switch buttonIndex{
+        case 0:
+            NSLog("Canceled")
+            break
+        case 1:
+            NSLog("Dropbox")
+            DBAccountManager.sharedManager().linkFromController(self)
+        case 2:
+            NSLog("Google Drive")
+        default:
+            NSLog("Default")
+            break
+            //Some code here..
+        }
+    }
+
 }

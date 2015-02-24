@@ -8,3 +8,5 @@
 #import <CommonCrypto/CommonKeyDerivation.h>
 
 #import <CommonCrypto/CommonCryptor.h>
+
+#import <Dropbox/Dropbox.h>

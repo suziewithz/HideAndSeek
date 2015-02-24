@@ -15,16 +15,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // 1
     let googleMapsApiKey = "AIzaSyCmzmHCGy2Mb4wET749QYD1iy10iRUeD4Q"
     
-    func application(application: UIApplication!, didFinishLaunchingWithOptions launchOptions: NSDictionary!) -> Bool {
-        // 2
+    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         GMSServices.provideAPIKey(googleMapsApiKey)
+        
+        let accountManager = DBAccountManager(appKey: "tpzacoaq6496tqz", secret: "pgk9lhq2zhdhl6l")
+        DBAccountManager.setSharedManager(accountManager)
+        
         return true
     }
     
-    
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
-        return true
+    func application(application: UIApplication, openURL url: NSURL,
+        sourceApplication: String, annotation: AnyObject?) -> Bool {
+            let account = DBAccountManager.sharedManager().handleOpenURL(url)
+            if (account != nil) {
+                println("App linked successfully!")
+                return true
+            }
+            return false
     }
     
     func applicationWillResignActive(application: UIApplication) {
