@@ -62,6 +62,7 @@ class SeekViewController: UIViewController {
         DismissKeyboard()
     }
     
+    // decrtypt file
     @IBAction func seekPressed(sender: AnyObject) {
         activityIndicator.startAnimating()
         if (passwordTextField.text.isEmpty){
@@ -87,6 +88,8 @@ class SeekViewController: UIViewController {
             
             storeDecryptedData(decryptedData, fileID: fileID)
             
+            activityIndicator.stopAnimating()
+            
             var refreshAlert = UIAlertController(title: "decrypted successfully", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
             
             refreshAlert.addAction(UIAlertAction(title: "go back to main", style: .Default, handler: { (action: UIAlertAction!) in
@@ -97,7 +100,7 @@ class SeekViewController: UIViewController {
             
             
         }
-        activityIndicator.stopAnimating()
+        
     }
     
     override func viewDidLoad() {
@@ -106,10 +109,6 @@ class SeekViewController: UIViewController {
         
         selectedFileLabel.text = "You selected \(selectedFile)"
         
-        
-        
-        
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -117,7 +116,7 @@ class SeekViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    
+    // save decrypted data in app directory.
     func storeDecryptedData(file: NSData, fileID : String){
         let fileManager = NSFileManager.defaultManager()
         var paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String
@@ -127,6 +126,7 @@ class SeekViewController: UIViewController {
         fileManager.createFileAtPath(filePathToWrite, contents: file, attributes: nil)
     }
     
+    // read nsdata from file
     func getDataFromFile(filename: String) -> NSData {
         var paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String
         var getDataPath = paths.stringByAppendingPathComponent(filename)
@@ -134,6 +134,7 @@ class SeekViewController: UIViewController {
         return selectedData!
     }
 
+    // send locations and fileId to server and get iv if it matches.
     func sendToServerFunction(fileID : String, xCoordinate : Double, yCoordinate:Double) -> String {
         var url: NSURL = NSURL(string: "http://54.200.204.64:5000/seek")!
         var request:NSMutableURLRequest = NSMutableURLRequest(URL:url)
@@ -160,6 +161,7 @@ class SeekViewController: UIViewController {
         return iv
     }
     
+    // read fileID in file. (last 16 chars)
     func getFileIDFromData (targetData : NSData) -> String {
         let fileIdRange = NSMakeRange(targetData.length - 16, 16)
         NSLog("\(fileIdRange)")
@@ -172,14 +174,15 @@ class SeekViewController: UIViewController {
         return fileID!
     }
     
+    // remove fileID and "hideandseek" from data.
     func extractFileIDFromData (targetData : NSData) -> NSData {
         let bufferData :NSMutableData = NSMutableData(length: targetData.length - 27)!
         var bufferPointer = UnsafeMutablePointer<UInt8>(bufferData.mutableBytes)
         targetData.getBytes(bufferPointer, range: NSMakeRange(0, targetData.length - 27))
         return bufferData
     }
+    
     func DismissKeyboard(){
-        //Causes the view (or one of its embedded text fields) to resign the first responder status.
         passwordTextField.endEditing(true)
     }
     
