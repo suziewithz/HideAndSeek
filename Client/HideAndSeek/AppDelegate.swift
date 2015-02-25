@@ -18,17 +18,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         GMSServices.provideAPIKey(googleMapsApiKey)
         
-        let accountManager = DBAccountManager(appKey: "tpzacoaq6496tqz", secret: "pgk9lhq2zhdhl6l")
-        DBAccountManager.setSharedManager(accountManager)
+        // setup dropbox
+        let dbSession = DBSession(appKey: "tpzacoaq6496tqz", appSecret: "pgk9lhq2zhdhl6l", root: kDBRootDropbox)
+        
+        DBSession.setSharedSession(dbSession)
         
         return true
     }
     
     func application(application: UIApplication, openURL url: NSURL,
         sourceApplication: String, annotation: AnyObject?) -> Bool {
-            let account = DBAccountManager.sharedManager().handleOpenURL(url)
-            if (account != nil) {
-                println("App linked successfully!")
+            if DBSession.sharedSession().handleOpenURL(url) {
+                if DBSession.sharedSession().isLinked() {
+                    println("Dropbox be linked!!!!")
+                }
                 return true
             }
             return false

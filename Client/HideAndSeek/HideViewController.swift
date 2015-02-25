@@ -22,7 +22,6 @@ extension String  {
         for i in 0..<digestLen {
             hash.appendFormat("%02x", result[i])
         }
-        
         result.dealloc(digestLen)
         
         return String(format: hash)

@@ -372,6 +372,32 @@
             </objects>
             <point key="canvasLocation" x="1238" y="1268"/>
         </scene>
+        <!--Dropbox Table View Controller-->
+        <scene sceneID="1X5-1h-Tyt">
+            <objects>
+                <tableViewController storyboardIdentifier="DropboxTableViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="kba-iI-t5R" customClass="DropboxTableViewController" customModule="HideAndSeek" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Z7G-WC-kqG">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="reuseIdentifier" id="HR9-XU-tWc">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HR9-XU-tWc" id="tyZ-o6-jRY">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="kba-iI-t5R" id="Mz5-u8-m4O"/>
+                            <outlet property="delegate" destination="kba-iI-t5R" id="68S-GU-tbk"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nm7-gh-MMc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1277" y="1997"/>
+        </scene>
         <!--Let's seek-->
         <scene sceneID="ART-X2-2rZ">
             <objects>

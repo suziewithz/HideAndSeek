@@ -7,23 +7,28 @@
 //
 
 import UIKit
+import MessageUI
 
-class SelectFileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIActionSheetDelegate{
+class SelectFileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIActionSheetDelegate, DBRestClientDelegate{
 
     var fileList : [String]!
     var hideOrSeek : String!
     var xCoordinate : Double!
     var yCoordinate : Double!
     var selectedFile : String!
+    var dbRestClient: DBRestClient?
     
+
     @IBOutlet weak var tableView: UITableView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
     }
-
     
     override func viewDidLoad() {
+
+        dbRestClient = DBRestClient(session: DBSession.sharedSession())
+        dbRestClient!.delegate = self
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Action, target: self, action: "showActionSheet")
         let fileManager:NSFileManager = NSFileManager.defaultManager()
@@ -40,11 +45,12 @@ class SelectFileViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     override func viewWillAppear(animated: Bool) {
+        fileList = listFilesFromDocumentsFolder()
         tableView.reloadData()
     }
     
-    func listFilesFromDocumentsFolder() -> [String]
-    {
+    // put filenames of files in app directory in fileList array.
+    func listFilesFromDocumentsFolder() -> [String] {
         var theError = NSErrorPointer()
         let dirs = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.AllDomainsMask, true) as? [String]
         if dirs != nil {
@@ -77,6 +83,7 @@ class SelectFileViewController: UIViewController, UITableViewDelegate, UITableVi
         return cell!
     }
     
+    // when cell is selcted, push.
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         println("You selected cell #\(indexPath.row)!")
         selectedFile = fileList[indexPath.row]
@@ -117,16 +124,26 @@ class SelectFileViewController: UIViewController, UITableViewDelegate, UITableVi
         }
     }
     
+    // actions on swift left
     func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]? {
+        
+        var dropboxRowAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Dropbox", handler:{action, indexpath in
+            let filenameToUpload = self.fileList[indexPath.row]
+            var dir = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String
+            var path = dir.stringByAppendingPathComponent(filenameToUpload)
+            self.dbRestClient?.uploadFile(filenameToUpload, toPath: "/", withParentRev: nil, fromPath: path)
+            tableView.reloadData()
+            
+        })
         
         var deleteRowAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Delete", handler:{action, indexpath in
             let filenameToDelete = self.fileList[indexPath.row]
             self.deleteFileData(filenameToDelete)
             self.fileList.removeAtIndex(indexPath.row)
             tableView.reloadData()
-        });
+        })
         
-        return [deleteRowAction];
+        return [dropboxRowAction, deleteRowAction];
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -204,19 +221,57 @@ class SelectFileViewController: UIViewController, UITableViewDelegate, UITableVi
             break
         case 1:
             NSLog("Dropbox")
-            let account = DBAccountManager.sharedManager().linkedAccount
-            if ( account == nil ) {
-                DBAccountManager.sharedManager().linkFromController(self)
+
+            if !DBSession.sharedSession().isLinked() {
+                // should let use know why ayou are asking for dropbox permissions
+                
+                // now ask for permission
+                DBSession.sharedSession().linkFromController(self)
             }
-            else {
+            if dbRestClient == nil {
+                dbRestClient = DBRestClient(session: DBSession.sharedSession())
+                dbRestClient!.delegate = self
+            }
+            if (dbRestClient != nil && DBSession.sharedSession().isLinked()) {
                 NSLog("let's import file")
+                let secondViewController = self.storyboard?.instantiateViewControllerWithIdentifier("DropboxTableViewController") as DropboxTableViewController
+
+                self.navigationController?.pushViewController(secondViewController, animated: true)
             }
+            
         case 2:
             NSLog("Google Drive")
         default:
             NSLog("Default")
             break
             //Some code here..
+        }
+    }
+    
+    // upload to Dropbox..
+    func restClient(client: DBRestClient!, uploadedFile destPath: NSString!, from srcPath: NSString!, metadata: DBMetadata!) {
+        var refreshAlert = UIAlertController(title: metadata.filename, message: "stored", preferredStyle: UIAlertControllerStyle.Alert)
+        refreshAlert.addAction(UIAlertAction(title: "dismiss", style: .Default, handler: { (action: UIAlertAction!) in
+            println("File uploaded successfully to path: \(metadata.path)")
+        }))
+        presentViewController(refreshAlert, animated: true, completion: nil)
+    }
+    
+    func restClient(client: DBRestClient!, movePathFailedWithError error: NSError!) {
+        var refreshAlert = UIAlertController(title: "failed", message: "fail to store file", preferredStyle: UIAlertControllerStyle.Alert)
+        refreshAlert.addAction(UIAlertAction(title: "dismiss", style: .Default, handler: { (action: UIAlertAction!) in
+            
+        }))
+        presentViewController(refreshAlert, animated: true, completion: nil)
+        println("File upload failed with error: \(error)")
+    }
+    
+    
+    func restClient(client: DBRestClient!, loadedMetadata: DBMetadata!) {
+        if (loadedMetadata.isDirectory){
+            for file in loadedMetadata.contents {
+                NSLog("\(file.filename)")
+            }
         }
     }
 
