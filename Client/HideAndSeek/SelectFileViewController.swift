@@ -106,7 +106,7 @@ class SelectFileViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+                        tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
         }
@@ -114,16 +114,14 @@ class SelectFileViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]? {
         
-        var moreRowAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "More", handler:{action, indexpath in
-            println("MORE•ACTION");
-        });
-        moreRowAction.backgroundColor = UIColor(red: 0.298, green: 0.851, blue: 0.3922, alpha: 1.0);
-        
         var deleteRowAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Delete", handler:{action, indexpath in
-            println("DELETE•ACTION");
+            let filenameToDelete = self.fileList[indexPath.row]
+            self.deleteFileData(filenameToDelete)
+            self.fileList.removeAtIndex(indexPath.row)
+            tableView.reloadData()
         });
         
-        return [deleteRowAction, moreRowAction];
+        return [deleteRowAction];
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -142,6 +140,13 @@ class SelectFileViewController: UIViewController, UITableViewDelegate, UITableVi
         }
     }
     
+    func deleteFileData(filename : String) {
+        let fileManager = NSFileManager.defaultManager()
+        var paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String
+        var filePathToDelete = "\(paths)/\(filename)"
+        var error : NSError?
+        fileManager.removeItemAtPath(filePathToDelete, error: &error)
+    }
     func checkEncrypted(filename:String) -> Bool {
         let fileData = getDataFromFile(filename)
         let bufferData :NSMutableData = NSMutableData(length: 11)!
