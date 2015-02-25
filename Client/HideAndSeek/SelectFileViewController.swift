@@ -39,6 +39,10 @@ class SelectFileViewController: UIViewController, UITableViewDelegate, UITableVi
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewWillAppear(animated: Bool) {
+        tableView.reloadData()
+    }
+    
     func listFilesFromDocumentsFolder() -> [String]
     {
         var theError = NSErrorPointer()
@@ -90,6 +94,7 @@ class SelectFileViewController: UIViewController, UITableViewDelegate, UITableVi
                     println("user chose unecrypted file.")
                 }))
                 presentViewController(refreshAlert, animated: true, completion: nil)
+                tableView.reloadData()
             }
         }
         
