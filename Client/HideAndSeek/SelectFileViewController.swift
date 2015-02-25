@@ -149,6 +149,10 @@ class SelectFileViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     func checkEncrypted(filename:String) -> Bool {
         let fileData = getDataFromFile(filename)
+        // when file is not long enough
+        if (fileData.length < 27) {
+            return false
+        }
         let bufferData :NSMutableData = NSMutableData(length: 11)!
         var bufferPointer = UnsafeMutablePointer<UInt8>(bufferData.mutableBytes)
         fileData.getBytes(bufferPointer, range: NSMakeRange(fileData.length - 27, 11))
@@ -170,6 +174,9 @@ class SelectFileViewController: UIViewController, UITableViewDelegate, UITableVi
         var paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String
         var getDataPath = paths.stringByAppendingPathComponent(filename)
         let selectedData = NSData(contentsOfFile: getDataPath, options: NSDataReadingOptions.DataReadingUncached, error: nil)
+        if selectedData == nil {
+            return NSData()
+        }
         return selectedData!
     }
     
