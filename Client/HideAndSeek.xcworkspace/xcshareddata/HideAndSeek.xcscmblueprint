@@ -1,0 +1,51 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "4215DAD04C8224ABAD388ECF5125505A2D61A387+++93BD362",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "4215DAD04C8224ABAD388ECF5125505A2D61A387+++4DE30A1" : 0,
+    "C3D8ED1CB28D809ADCE2C0DE74935E8A502ACD53+++A54B07D" : 0,
+    "4215DAD04C8224ABAD388ECF5125505A2D61A387+++93BD362" : 0,
+    "4215DAD04C8224ABAD388ECF5125505A2D61A387+++DF619F9" : 0,
+    "C14ECDCCE10C5AE8877B3C5DEB8BED1653569F48+++96CA0E7" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "8BF4F6F4-314A-4196-98D3-E91D326DCF94",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "4215DAD04C8224ABAD388ECF5125505A2D61A387+++4DE30A1" : "..\/HideAndSeek_back",
+    "C3D8ED1CB28D809ADCE2C0DE74935E8A502ACD53+++A54B07D" : "..\/HideAndSeek_back\/Client\/CryptoSwift",
+    "4215DAD04C8224ABAD388ECF5125505A2D61A387+++93BD362" : "HideAndSeek\/",
+    "4215DAD04C8224ABAD388ECF5125505A2D61A387+++DF619F9" : "..\/HideAndSeek_back",
+    "C14ECDCCE10C5AE8877B3C5DEB8BED1653569F48+++96CA0E7" : "..\/GuessTalk"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "HideAndSeek",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Client\/HideAndSeek.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/suziewithz\/HideAndSeek.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "4215DAD04C8224ABAD388ECF5125505A2D61A387+++4DE30A1"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "http:\/\/github.com\/suziewithz\/HideAndSeek.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "4215DAD04C8224ABAD388ECF5125505A2D61A387+++93BD362"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "http:\/\/github.com\/suziewithz\/HideAndSeek.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "4215DAD04C8224ABAD388ECF5125505A2D61A387+++DF619F9"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/suziewithz\/GuessTalk.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "C14ECDCCE10C5AE8877B3C5DEB8BED1653569F48+++96CA0E7"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/krzyzanowskim\/CryptoSwift.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "C3D8ED1CB28D809ADCE2C0DE74935E8A502ACD53+++A54B07D"
+    }
+  ]
+}

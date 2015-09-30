@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		13844A6B62DD2C42A2E7D2A3 /* Pods_HideAndSeek.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD5127402A28A00DBD0310EA /* Pods_HideAndSeek.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		7918684E1A844F780080E43E /* HideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7918684D1A844F780080E43E /* HideViewController.swift */; };
 		7993849E1A8357A5004420B8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7993849D1A8357A5004420B8 /* AppDelegate.swift */; };
 		799384A01A8357A5004420B8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7993849F1A8357A5004420B8 /* ViewController.swift */; };
@@ -14,24 +15,18 @@
 		799384A51A8357A5004420B8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 799384A41A8357A5004420B8 /* Images.xcassets */; };
 		799384A81A8357A5004420B8 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 799384A61A8357A5004420B8 /* LaunchScreen.xib */; };
 		799384B41A8357A6004420B8 /* HideAndSeekTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799384B31A8357A6004420B8 /* HideAndSeekTests.swift */; };
-		799384C01A835A5F004420B8 /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 799384BF1A835A5F004420B8 /* GoogleMaps.framework */; };
 		799384C81A835B48004420B8 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 799384C71A835B48004420B8 /* AVFoundation.framework */; };
 		799384CA1A835B4F004420B8 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 799384C91A835B4F004420B8 /* CoreData.framework */; };
 		799384CC1A835B57004420B8 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 799384CB1A835B57004420B8 /* CoreLocation.framework */; };
 		799384CE1A835B5D004420B8 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 799384CD1A835B5D004420B8 /* CoreText.framework */; };
 		799384D01A835B63004420B8 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 799384CF1A835B63004420B8 /* GLKit.framework */; };
 		799384D21A835B68004420B8 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 799384D11A835B68004420B8 /* ImageIO.framework */; };
-		799384D41A835B70004420B8 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 799384D31A835B70004420B8 /* libc++.dylib */; };
-		799384D61A835B77004420B8 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 799384D51A835B77004420B8 /* libicucore.dylib */; };
-		799384D81A835B7D004420B8 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 799384D71A835B7D004420B8 /* libz.dylib */; };
 		799384DA1A835B82004420B8 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 799384D91A835B82004420B8 /* OpenGLES.framework */; };
 		799384DC1A835B89004420B8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 799384DB1A835B89004420B8 /* QuartzCore.framework */; };
 		799384DE1A835B8F004420B8 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 799384DD1A835B8F004420B8 /* SystemConfiguration.framework */; };
 		799384E31A835ED7004420B8 /* location-pointer.png in Resources */ = {isa = PBXBuildFile; fileRef = 799384E21A835ED7004420B8 /* location-pointer.png */; };
 		799384E51A83788B004420B8 /* HideAndSeek_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 799384E41A83788B004420B8 /* HideAndSeek_icon.png */; };
-		79A2C8F01A9DB91D000F723E /* DropboxSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79A2C8EF1A9DB91D000F723E /* DropboxSDK.framework */; };
 		79A2C8F21A9DC2AB000F723E /* DropboxTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A2C8F11A9DC2AB000F723E /* DropboxTableViewController.swift */; };
-		79DBF9F81A84BD2400116EC7 /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 79DBF9F71A84BD2400116EC7 /* GoogleMaps.bundle */; };
 		79DBF9FA1A84C2B900116EC7 /* SeekViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DBF9F91A84C2B900116EC7 /* SeekViewController.swift */; };
 		79E0C4A81A91929D00680F09 /* HideResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E0C4A71A91929D00680F09 /* HideResultViewController.swift */; };
 		79E1A45A1A8896FD00F6F44F /* SelectFileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E1A4591A8896FD00F6F44F /* SelectFileViewController.swift */; };
@@ -49,6 +44,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		22217A6141C65471092F7BD1 /* Pods-HideAndSeek.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HideAndSeek.release.xcconfig"; path = "Pods/Target Support Files/Pods-HideAndSeek/Pods-HideAndSeek.release.xcconfig"; sourceTree = "<group>"; };
+		568159972ABBBEF1AF7C3945 /* Pods-HideAndSeek.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HideAndSeek.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HideAndSeek/Pods-HideAndSeek.debug.xcconfig"; sourceTree = "<group>"; };
 		7918684D1A844F780080E43E /* HideViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HideViewController.swift; sourceTree = "<group>"; };
 		799384981A8357A5004420B8 /* HideAndSeek.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HideAndSeek.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7993849C1A8357A5004420B8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -60,29 +57,24 @@
 		799384AD1A8357A6004420B8 /* HideAndSeekTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HideAndSeekTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		799384B21A8357A6004420B8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		799384B31A8357A6004420B8 /* HideAndSeekTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideAndSeekTests.swift; sourceTree = "<group>"; };
-		799384BF1A835A5F004420B8 /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
 		799384C71A835B48004420B8 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		799384C91A835B4F004420B8 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		799384CB1A835B57004420B8 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		799384CD1A835B5D004420B8 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		799384CF1A835B63004420B8 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
 		799384D11A835B68004420B8 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
-		799384D31A835B70004420B8 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
-		799384D51A835B77004420B8 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
-		799384D71A835B7D004420B8 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		799384D91A835B82004420B8 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		799384DB1A835B89004420B8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		799384DD1A835B8F004420B8 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		799384DF1A835C8A004420B8 /* HideAndSeek-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HideAndSeek-Bridging-Header.h"; sourceTree = "<group>"; };
 		799384E21A835ED7004420B8 /* location-pointer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "location-pointer.png"; sourceTree = "<group>"; };
 		799384E41A83788B004420B8 /* HideAndSeek_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HideAndSeek_icon.png; sourceTree = "<group>"; };
-		79A2C8EF1A9DB91D000F723E /* DropboxSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DropboxSDK.framework; sourceTree = "<group>"; };
 		79A2C8F11A9DC2AB000F723E /* DropboxTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropboxTableViewController.swift; sourceTree = "<group>"; };
-		79DBF9F71A84BD2400116EC7 /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
 		79DBF9F91A84C2B900116EC7 /* SeekViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeekViewController.swift; sourceTree = "<group>"; };
 		79E0C4A71A91929D00680F09 /* HideResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HideResultViewController.swift; sourceTree = "<group>"; };
 		79E1A4591A8896FD00F6F44F /* SelectFileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectFileViewController.swift; sourceTree = "<group>"; };
 		79FE147F1A8C83B7003DBDBD /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		CD5127402A28A00DBD0310EA /* Pods_HideAndSeek.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HideAndSeek.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,21 +82,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				79A2C8F01A9DB91D000F723E /* DropboxSDK.framework in Frameworks */,
 				79FE14801A8C83B7003DBDBD /* Security.framework in Frameworks */,
 				799384DE1A835B8F004420B8 /* SystemConfiguration.framework in Frameworks */,
 				799384DC1A835B89004420B8 /* QuartzCore.framework in Frameworks */,
 				799384DA1A835B82004420B8 /* OpenGLES.framework in Frameworks */,
-				799384D81A835B7D004420B8 /* libz.dylib in Frameworks */,
-				799384D61A835B77004420B8 /* libicucore.dylib in Frameworks */,
-				799384D41A835B70004420B8 /* libc++.dylib in Frameworks */,
 				799384D21A835B68004420B8 /* ImageIO.framework in Frameworks */,
 				799384D01A835B63004420B8 /* GLKit.framework in Frameworks */,
 				799384CE1A835B5D004420B8 /* CoreText.framework in Frameworks */,
 				799384CC1A835B57004420B8 /* CoreLocation.framework in Frameworks */,
 				799384CA1A835B4F004420B8 /* CoreData.framework in Frameworks */,
 				799384C81A835B48004420B8 /* AVFoundation.framework in Frameworks */,
-				799384C01A835A5F004420B8 /* GoogleMaps.framework in Frameworks */,
+				13844A6B62DD2C42A2E7D2A3 /* Pods_HideAndSeek.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -118,6 +106,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4B90606B7CCBB5A4CFE12BCC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				568159972ABBBEF1AF7C3945 /* Pods-HideAndSeek.debug.xcconfig */,
+				22217A6141C65471092F7BD1 /* Pods-HideAndSeek.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		7993848F1A8357A5004420B8 = {
 			isa = PBXGroup;
 			children = (
@@ -125,6 +122,7 @@
 				7993849A1A8357A5004420B8 /* HideAndSeek */,
 				799384B01A8357A6004420B8 /* HideAndSeekTests */,
 				799384991A8357A5004420B8 /* Products */,
+				4B90606B7CCBB5A4CFE12BCC /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -186,22 +184,17 @@
 		799384BE1A835A34004420B8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				79A2C8EF1A9DB91D000F723E /* DropboxSDK.framework */,
 				79FE147F1A8C83B7003DBDBD /* Security.framework */,
 				799384DD1A835B8F004420B8 /* SystemConfiguration.framework */,
 				799384DB1A835B89004420B8 /* QuartzCore.framework */,
 				799384D91A835B82004420B8 /* OpenGLES.framework */,
-				799384D71A835B7D004420B8 /* libz.dylib */,
-				799384D51A835B77004420B8 /* libicucore.dylib */,
-				799384D31A835B70004420B8 /* libc++.dylib */,
-				79DBF9F71A84BD2400116EC7 /* GoogleMaps.bundle */,
 				799384D11A835B68004420B8 /* ImageIO.framework */,
 				799384CF1A835B63004420B8 /* GLKit.framework */,
 				799384CD1A835B5D004420B8 /* CoreText.framework */,
 				799384CB1A835B57004420B8 /* CoreLocation.framework */,
 				799384C91A835B4F004420B8 /* CoreData.framework */,
 				799384C71A835B48004420B8 /* AVFoundation.framework */,
-				799384BF1A835A5F004420B8 /* GoogleMaps.framework */,
+				CD5127402A28A00DBD0310EA /* Pods_HideAndSeek.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -213,9 +206,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 799384B71A8357A6004420B8 /* Build configuration list for PBXNativeTarget "HideAndSeek" */;
 			buildPhases = (
+				A0380A7B547F7A5B01BEE008 /* Check Pods Manifest.lock */,
 				799384941A8357A5004420B8 /* Sources */,
 				799384951A8357A5004420B8 /* Frameworks */,
 				799384961A8357A5004420B8 /* Resources */,
+				8CF32F7BAF355B79062E3503 /* Embed Pods Frameworks */,
+				0E8058E003C891F74D1DAC8F /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -250,7 +246,9 @@
 		799384901A8357A5004420B8 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0610;
+				LastSwiftMigration = 0700;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = suz;
 				TargetAttributes = {
 					799384971A8357A5004420B8 = {
@@ -289,7 +287,6 @@
 				799384E51A83788B004420B8 /* HideAndSeek_icon.png in Resources */,
 				799384E31A835ED7004420B8 /* location-pointer.png in Resources */,
 				799384A31A8357A5004420B8 /* Main.storyboard in Resources */,
-				79DBF9F81A84BD2400116EC7 /* GoogleMaps.bundle in Resources */,
 				799384A81A8357A5004420B8 /* LaunchScreen.xib in Resources */,
 				799384A51A8357A5004420B8 /* Images.xcassets in Resources */,
 			);
@@ -303,6 +300,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0E8058E003C891F74D1DAC8F /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HideAndSeek/Pods-HideAndSeek-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8CF32F7BAF355B79062E3503 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HideAndSeek/Pods-HideAndSeek-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A0380A7B547F7A5B01BEE008 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		799384941A8357A5004420B8 /* Sources */ = {
@@ -376,7 +421,9 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -421,6 +468,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
+				ENABLE_BITCODE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -441,15 +489,18 @@
 		};
 		799384B81A8357A6004420B8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 568159972ABBBEF1AF7C3945 /* Pods-HideAndSeek.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = HideAndSeek/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "suz.co.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_INCLUDE_PATHS = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "HideAndSeek/HideAndSeek-Bridging-Header.h";
@@ -460,15 +511,18 @@
 		};
 		799384B91A8357A6004420B8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 22217A6141C65471092F7BD1 /* Pods-HideAndSeek.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = HideAndSeek/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "suz.co.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_INCLUDE_PATHS = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "HideAndSeek/HideAndSeek-Bridging-Header.h";
@@ -490,6 +544,7 @@
 				);
 				INFOPLIST_FILE = HideAndSeekTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "suz.co.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HideAndSeek.app/HideAndSeek";
 			};
@@ -505,6 +560,7 @@
 				);
 				INFOPLIST_FILE = HideAndSeekTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "suz.co.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HideAndSeek.app/HideAndSeek";
 			};

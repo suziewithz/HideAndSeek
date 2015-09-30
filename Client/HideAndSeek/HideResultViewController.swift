@@ -9,7 +9,6 @@
 import UIKit
 
 class HideResultViewController: UIViewController, CLLocationManagerDelegate {
-
     @IBOutlet weak var mapView: GMSMapView!
 
     @IBOutlet weak var selectedFileLabel: UILabel!
@@ -31,7 +30,7 @@ class HideResultViewController: UIViewController, CLLocationManagerDelegate {
         selectedFileLabel.text = selectedFile
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
-        
+        locationManager.startUpdatingLocation()
     }
 
     override func didReceiveMemoryWarning() {
@@ -40,7 +39,9 @@ class HideResultViewController: UIViewController, CLLocationManagerDelegate {
     }
     
 
-    func locationManager(manager: CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+        locationManager.stopUpdatingLocation()
+        
         // 2
         if status == .AuthorizedWhenInUse {
             
@@ -54,8 +55,8 @@ class HideResultViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     // 5
-    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
-        if let location = locations.first as? CLLocation {
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.first as CLLocation! {
             
             // 6
             mapView.camera = GMSCameraPosition(target: location.coordinate, zoom: 15, bearing: 0, viewingAngle: 0)

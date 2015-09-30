@@ -18,13 +18,13 @@ extension String  {
         
         CC_MD5(str!, strLen, result)
         
-        var hash = NSMutableString()
+        let hash = NSMutableString()
         for i in 0..<digestLen {
             hash.appendFormat("%02x", result[i])
         }
         result.dealloc(digestLen)
         
-        return String(format: hash)
+        return String(format: hash as String)
     }
 }
 
@@ -33,18 +33,18 @@ extension NSData {
         let keyData: NSData! = (key as NSString).dataUsingEncoding(NSUTF8StringEncoding) as NSData!
         let keyBytes         = UnsafePointer<UInt8>(keyData.bytes)
         let keyLength        = size_t(kCCKeySizeAES256)
-        let dataLength    = UInt(self.length)
+        let dataLength    = self.length
         let dataBytes     = UnsafePointer<UInt8>(self.bytes)
         let bufferData :NSMutableData = NSMutableData(length: Int(dataLength) + kCCBlockSizeAES128)!
-        var bufferPointer = UnsafeMutablePointer<UInt8>(bufferData.mutableBytes)
+        let bufferPointer = UnsafeMutablePointer<UInt8>(bufferData.mutableBytes)
         let bufferLength  = size_t(bufferData.length)
         let operation: CCOperation = UInt32(kCCEncrypt)
         let algoritm:  CCAlgorithm = UInt32(kCCAlgorithmAES128)
         let options:   CCOptions   = UInt32(kCCOptionECBMode + kCCOptionPKCS7Padding)
         let ivData: NSData! = (iv as NSString).dataUsingEncoding(NSUTF8StringEncoding) as NSData!
         let ivPointer = UnsafePointer<UInt8>(ivData.bytes)
-        var numBytesEncrypted: UInt = 0
-        var cryptStatus = CCCrypt(operation,
+        var numBytesEncrypted: Int = 0
+        let cryptStatus = CCCrypt(operation,
             algoritm,
             options,
             keyBytes, keyLength,
@@ -56,7 +56,6 @@ extension NSData {
             bufferData.length = Int(numBytesEncrypted) // Requiered to adjust buffer size
             return bufferData as NSData
         } else {
-            println("Error: \(cryptStatus)")
             return NSData()
         }
     }
@@ -81,11 +80,11 @@ class HideViewController: UIViewController {
     
     @IBAction func donePressed(sender: AnyObject) {
         activityIndicator.startAnimating()
-        if (passwordTextField.text.isEmpty){
-            var refreshAlert = UIAlertController(title: "wrong password", message: "please type password", preferredStyle: UIAlertControllerStyle.Alert)
+        if (passwordTextField.text!.isEmpty){
+            let refreshAlert = UIAlertController(title: "wrong password", message: "please type password", preferredStyle: UIAlertControllerStyle.Alert)
             
-            refreshAlert.addAction(UIAlertAction(title: "dismiss", style: .Default, handler: { (action: UIAlertAction!) in
-                println("no password")
+            refreshAlert.addAction(UIAlertAction(title: "dismiss", style: .Default, handler: { (action: UIAlertAction) in
+                print("no password")
             }))
             activityIndicator.stopAnimating()
             presentViewController(refreshAlert, animated: true, completion: nil)
@@ -94,7 +93,7 @@ class HideViewController: UIViewController {
             let iv = randomIVGenerator()
             let selectedData = getDataFromFile(selectedFile)
 
-            let encryptedPassword = passwordTextField.text.md5
+            let encryptedPassword = passwordTextField.text!.md5
             
             let encryptedData :NSData = selectedData.AES256EncryptDataWithKey(encryptedPassword!, iv: iv)
             
@@ -106,10 +105,10 @@ class HideViewController: UIViewController {
         }
             
         else {
-            var refreshAlert = UIAlertController(title: "wrong password", message: "password and retype password are not the same", preferredStyle: UIAlertControllerStyle.Alert)
+            let refreshAlert = UIAlertController(title: "wrong password", message: "password and retype password are not the same", preferredStyle: UIAlertControllerStyle.Alert)
             
-            refreshAlert.addAction(UIAlertAction(title: "dismiss", style: .Default, handler: { (action: UIAlertAction!) in
-                println("wrong password")
+            refreshAlert.addAction(UIAlertAction(title: "dismiss", style: .Default, handler: { (action: UIAlertAction) in
+                print("wrong password")
             }))
             presentViewController(refreshAlert, animated: true, completion: nil)
         }
@@ -133,17 +132,21 @@ class HideViewController: UIViewController {
         resultFile = appendStringToFile(resultFile, targetString: fileID)
         
         let fileManager = NSFileManager.defaultManager()
-        var paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String
-        var filePathToWrite = "\(paths)/encrypted_\(selectedFile)"
+        let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String
+        let filePathToWrite = "\(paths)/encrypted_\(selectedFile)"
         
         fileManager.createFileAtPath(filePathToWrite, contents: resultFile, attributes: nil)
     }
     
     func getDataFromFile(filename: String) -> NSData {
-        var paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String
-        var getDataPath = paths.stringByAppendingPathComponent(filename)
-        let selectedData = NSData(contentsOfFile: getDataPath, options: NSDataReadingOptions.DataReadingUncached, error: nil)
-        return selectedData!
+        let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String
+        let getDataPath = paths.stringByAppendingString("/" + filename)
+        do {
+            let selectedData = try NSData(contentsOfFile: getDataPath, options: NSDataReadingOptions.DataReadingUncached)
+            return selectedData
+        } catch {
+            return NSData()
+        }
     }
     
     func randomIVGenerator() -> String {
@@ -151,34 +154,38 @@ class HideViewController: UIViewController {
         
         var randomStringIV : String = ""
         
-        var arrSize = arr.count
+        let arrSize = arr.count
         
-        for i in 0 ..< 32 {
-            var randomIndex : Int = Int(arc4random()) % arrSize
+        for _ in 0 ..< 32 {
+            let randomIndex : Int = Int(arc4random()) % arrSize
             randomStringIV = randomStringIV + arr[randomIndex]
         }
         
-        print ("\(randomStringIV)")
+        print ("\(randomStringIV)", terminator: "")
         
         return randomStringIV
     }
     
     func postToServerFunction(randomStringIV : String, xCoordinate : Double, yCoordinate:Double) -> String {
-        println("let's post")
-        var url: NSURL = NSURL(string: "http://54.200.204.64:5000/hide")!
-        var request:NSMutableURLRequest = NSMutableURLRequest(URL:url)
+        /*
+        print("let's post")
+        let url: NSURL = NSURL(string: "http://1.223.130.235:8000/hide")!
+        let request:NSMutableURLRequest = NSMutableURLRequest(URL:url)
         var fileID : NSString!
-        var requestDictionary = [
+        let requestDictionary = [
             "xCoordinate" : "\(xCoordinate)",
             "yCoordinate" : "\(yCoordinate)",
             "iv" : "\(randomStringIV)"
         ]
         
-        println("\(requestDictionary)")
+        print("\(requestDictionary)")
         
-
-        var error: NSError?
-        let bodyData = NSJSONSerialization.dataWithJSONObject(requestDictionary, options: nil, error: &error)
+        let bodyData: NSData?
+        do {
+            bodyData = try NSJSONSerialization.dataWithJSONObject(requestDictionary, options: [])
+        } catch {
+            bodyData = nil
+        }
         
         request.HTTPMethod = "POST"
         request.HTTPBody = bodyData
@@ -188,17 +195,22 @@ class HideViewController: UIViewController {
             println("\(fileID)")
         }*/
         var response: NSURLResponse?
-        let urlData = NSURLConnection.sendSynchronousRequest(request, returningResponse: &response, error: &error)
+        let urlData: NSData?
+        do {
+            urlData = try NSURLConnection.sendSynchronousRequest(request, returningResponse: &response)
+        } catch {
+            urlData = nil
+        }
 
         fileID = NSString(data: urlData!, encoding: NSUTF8StringEncoding)
-        NSLog ("fileID: \(fileID)")
-        return fileID
+        NSLog ("fileID: \(fileID)")*/
+        return "abcdefghijklmnop" as String
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let identifier :NSString! = segue.identifier
         if identifier.isEqualToString("PushToHideResult") {
-            let viewController :HideResultViewController! = segue.destinationViewController as HideResultViewController
+            let viewController :HideResultViewController! = segue.destinationViewController as! HideResultViewController
             viewController.selectedFile = self.selectedFile
         }
     }
@@ -210,7 +222,7 @@ class HideViewController: UIViewController {
     }
     
     func appendStringToFile (targetData: NSData, targetString: String) -> NSData {
-        var resultData = targetData as NSMutableData
+        let resultData = targetData as! NSMutableData
         resultData.appendData(targetString.dataUsingEncoding(NSUTF8StringEncoding)!)
         return resultData as NSData
     }

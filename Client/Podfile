@@ -1,0 +1,14 @@
+platform :ios, "8.1"
+use_frameworks!
+
+
+target 'HideAndSeek' do
+	pod 'Dropbox-iOS-SDK'
+	pod 'GoogleMaps'
+	pod 'CryptoSwift'
+end
+
+target 'HideAndSeekTests' do
+
+end
+

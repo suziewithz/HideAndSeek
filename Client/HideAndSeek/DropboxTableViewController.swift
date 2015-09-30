@@ -9,11 +9,15 @@
 import UIKit
 
 class DropboxTableViewController: UITableViewController, DBRestClientDelegate {
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
 
     var dropboxFileList = NSMutableArray()
     var dbRestClient: DBRestClient?
     var selectedFile : String!
-    let selectedFilePath : String!
+    var selectedFilePath : String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,8 +58,8 @@ class DropboxTableViewController: UITableViewController, DBRestClientDelegate {
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         selectedFile = "\(dropboxFileList[indexPath.row])"
-        var paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String
-        var filePathToWrite = "\(paths)/\(selectedFile)"
+        let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String
+        let filePathToWrite = "\(paths)/\(selectedFile)"
         dbRestClient?.loadFile("/\(selectedFile)", intoPath: filePathToWrite)
 
     }
@@ -63,7 +67,6 @@ class DropboxTableViewController: UITableViewController, DBRestClientDelegate {
     func restClient(client: DBRestClient!, loadedMetadata: DBMetadata!) {
         if (loadedMetadata.isDirectory){
             for file in loadedMetadata.contents {
-                NSLog("\(file.filename?)")
                 dropboxFileList.addObject(file.filename!!)
                 tableView.reloadData()
             }
@@ -71,16 +74,23 @@ class DropboxTableViewController: UITableViewController, DBRestClientDelegate {
 
     }
     
-    func restClient(client: DBRestClient!, loadedFile localPath: NSString!, contentType: String!, metadata: DBMetadata!) {
+    func restClient(client: DBRestClient!, loadedFile localPath: String!, contentType: String!, metadata: DBMetadata!) {
         NSLog("file loaded into path \(localPath)" )
-        let selectedData = NSData(contentsOfFile: localPath, options: NSDataReadingOptions.UncachedRead, error: nil)
+        var selectedData = NSData()
+        do {
+            selectedData = try NSData(contentsOfFile: localPath as String, options: NSDataReadingOptions.UncachedRead)
+        } catch {
+            // Ignore
+        }
         let fileManager = NSFileManager.defaultManager()
-        var paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String
-        var filePathToWrite = "\(paths)/\(selectedFile)"
+        let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String
+        let filePathToWrite = "\(paths)/\(selectedFile)"
         fileManager.createFileAtPath(filePathToWrite, contents: selectedData, attributes: nil)
         
         self.navigationController?.popViewControllerAnimated(true)
     }
+    
+    
     
     func saveFile(filename: String) {
     

@@ -43,14 +43,7 @@ class ViewController: UIViewController , CLLocationManagerDelegate{
         super.viewDidLoad()
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
-        xCoordinate = locationManager.location.coordinate.latitude
-        yCoordinate = locationManager.location.coordinate.longitude
-        
-        latitudeLabel.text = "Latitude : \(xCoordinate)"
-        longitudeLabel.text = "Longitude: \(yCoordinate)"
-        
-        
-        
+        locationManager.startUpdatingLocation()
     }
 
     override func didReceiveMemoryWarning() {
@@ -59,7 +52,14 @@ class ViewController: UIViewController , CLLocationManagerDelegate{
 
     }
 
-    func locationManager(manager: CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+        manager.stopUpdatingLocation()
+
+        xCoordinate = locationManager.location!.coordinate.latitude
+        yCoordinate = locationManager.location!.coordinate.longitude
+        latitudeLabel.text = "Latitude : \(xCoordinate)"
+        longitudeLabel.text = "Longitude: \(yCoordinate)"
+        
         // 2
         if status == .AuthorizedWhenInUse {
             
@@ -73,9 +73,8 @@ class ViewController: UIViewController , CLLocationManagerDelegate{
     }
     
     // 5
-    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
-        if let location = locations.first as? CLLocation {
-            
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.first as CLLocation! {
             // 6
             mapView.camera = GMSCameraPosition(target: location.coordinate, zoom: 15, bearing: 0, viewingAngle: 0)
             
@@ -88,7 +87,7 @@ class ViewController: UIViewController , CLLocationManagerDelegate{
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let identifier :NSString! = segue.identifier
         if identifier.isEqualToString("PushDataToMedium") {
-            let viewController :SelectFileViewController! = segue.destinationViewController as SelectFileViewController
+            let viewController :SelectFileViewController! = segue.destinationViewController as! SelectFileViewController
             viewController.xCoordinate = self.xCoordinate
             viewController.yCoordinate = self.yCoordinate
             viewController.hideOrSeek =  hideOrSeek

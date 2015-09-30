@@ -31,12 +31,7 @@ class SelectFileViewController: UIViewController, UITableViewDelegate, UITableVi
         dbRestClient!.delegate = self
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Action, target: self, action: "showActionSheet")
-        let fileManager:NSFileManager = NSFileManager.defaultManager()
         fileList = listFilesFromDocumentsFolder()
-
-        let count = fileList.count
-        var isDir:Bool = true;
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -51,12 +46,18 @@ class SelectFileViewController: UIViewController, UITableViewDelegate, UITableVi
     
     // put filenames of files in app directory in fileList array.
     func listFilesFromDocumentsFolder() -> [String] {
-        var theError = NSErrorPointer()
-        let dirs = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.AllDomainsMask, true) as? [String]
-        if dirs != nil {
-            let dir = dirs![0]
-            let fileList = NSFileManager.defaultManager().contentsOfDirectoryAtPath(dir, error: theError)
-            return fileList as [String]
+        let theError = NSErrorPointer()
+        let dirs = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.AllDomainsMask, true)
+        if !dirs.isEmpty {
+            let dir = dirs[0]
+            let fileList: [AnyObject]?
+            do {
+                fileList = try NSFileManager.defaultManager().contentsOfDirectoryAtPath(dir)
+            } catch let error as NSError {
+                theError.memory = error
+                fileList = nil
+            }
+            return fileList as! [String]
         }else{
             let fileList = [""]
             return fileList
@@ -70,7 +71,7 @@ class SelectFileViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("CELL") as? UITableViewCell
+        var cell = tableView.dequeueReusableCellWithIdentifier("CELL") as UITableViewCell!
         
         if cell == nil {
             cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "CELL")
@@ -85,7 +86,7 @@ class SelectFileViewController: UIViewController, UITableViewDelegate, UITableVi
     
     // when cell is selcted, push.
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        println("You selected cell #\(indexPath.row)!")
+        print("You selected cell #\(indexPath.row)!")
         selectedFile = fileList[indexPath.row]
         if self.hideOrSeek == "hide" {
             self.performSegueWithIdentifier("PushDataToHide", sender: self)
@@ -95,10 +96,10 @@ class SelectFileViewController: UIViewController, UITableViewDelegate, UITableVi
                 self.performSegueWithIdentifier("PushDataToSeek", sender: self)
             }
             else {
-                var refreshAlert = UIAlertController(title: "It's not encrypted", message: "file was not encrypted", preferredStyle: UIAlertControllerStyle.Alert)
+                let refreshAlert = UIAlertController(title: "It's not encrypted", message: "file was not encrypted", preferredStyle: UIAlertControllerStyle.Alert)
                 
-                refreshAlert.addAction(UIAlertAction(title: "dismiss", style: .Default, handler: { (action: UIAlertAction!) in
-                    println("user chose unecrypted file.")
+                refreshAlert.addAction(UIAlertAction(title: "dismiss", style: .Default, handler: { (action: UIAlertAction) in
+                    print("user chose unecrypted file.")
                 }))
                 presentViewController(refreshAlert, animated: true, completion: nil)
                 tableView.reloadData()
@@ -125,18 +126,18 @@ class SelectFileViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     // actions on swift left
-    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]? {
+    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
         
-        var dropboxRowAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Dropbox", handler:{action, indexpath in
+        let dropboxRowAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Dropbox", handler:{action, indexpath in
             let filenameToUpload = self.fileList[indexPath.row]
-            var dir = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String
-            var path = dir.stringByAppendingPathComponent(filenameToUpload)
+            let dir = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String
+            let path = dir.stringByAppendingString("/" + filenameToUpload)
             self.dbRestClient?.uploadFile(filenameToUpload, toPath: "/", withParentRev: nil, fromPath: path)
             tableView.reloadData()
             
         })
         
-        var deleteRowAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Delete", handler:{action, indexpath in
+        let deleteRowAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Delete", handler:{action, indexpath in
             let filenameToDelete = self.fileList[indexPath.row]
             self.deleteFileData(filenameToDelete)
             self.fileList.removeAtIndex(indexPath.row)
@@ -149,13 +150,13 @@ class SelectFileViewController: UIViewController, UITableViewDelegate, UITableVi
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let identifier :NSString! = segue.identifier
         if identifier.isEqualToString("PushDataToHide") {
-            let viewController :HideViewController! = segue.destinationViewController as HideViewController
+            let viewController :HideViewController! = segue.destinationViewController as! HideViewController
             viewController.xCoordinate = self.xCoordinate
             viewController.yCoordinate = self.yCoordinate
             viewController.selectedFile = self.selectedFile
         }
         if identifier.isEqualToString("PushDataToSeek") {
-            let viewController :SeekViewController! = segue.destinationViewController as SeekViewController
+            let viewController :SeekViewController! = segue.destinationViewController as! SeekViewController
             viewController.xCoordinate = self.xCoordinate
             viewController.yCoordinate = self.yCoordinate
             viewController.selectedFile = self.selectedFile
@@ -164,10 +165,13 @@ class SelectFileViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func deleteFileData(filename : String) {
         let fileManager = NSFileManager.defaultManager()
-        var paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String
-        var filePathToDelete = "\(paths)/\(filename)"
-        var error : NSError?
-        fileManager.removeItemAtPath(filePathToDelete, error: &error)
+        let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String
+        let filePathToDelete = "\(paths)/\(filename)"
+        do {
+            try fileManager.removeItemAtPath(filePathToDelete)
+        } catch {
+            
+        }
     }
     func checkEncrypted(filename:String) -> Bool {
         let fileData = getDataFromFile(filename)
@@ -176,7 +180,7 @@ class SelectFileViewController: UIViewController, UITableViewDelegate, UITableVi
             return false
         }
         let bufferData :NSMutableData = NSMutableData(length: 11)!
-        var bufferPointer = UnsafeMutablePointer<UInt8>(bufferData.mutableBytes)
+        let bufferPointer = UnsafeMutablePointer<UInt8>(bufferData.mutableBytes)
         fileData.getBytes(bufferPointer, range: NSMakeRange(fileData.length - 27, 11))
         NSLog("arr : \(bufferData)")
         let verification : NSString! = NSString(data: bufferData, encoding: NSUTF8StringEncoding)
@@ -193,13 +197,15 @@ class SelectFileViewController: UIViewController, UITableViewDelegate, UITableVi
         }
     }
     func getDataFromFile(filename: String) -> NSData {
-        var paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String
-        var getDataPath = paths.stringByAppendingPathComponent(filename)
-        let selectedData = NSData(contentsOfFile: getDataPath, options: NSDataReadingOptions.DataReadingUncached, error: nil)
-        if selectedData == nil {
-            return NSData()
+        let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String
+        let getDataPath = paths.stringByAppendingString("/" + filename)
+        var selectedData = NSData()
+        do {
+            selectedData = try NSData(contentsOfFile: getDataPath, options: NSDataReadingOptions.DataReadingUncached)
+        } catch {
+            
         }
-        return selectedData!
+        return selectedData
     }
     
     func showActionSheet() {
@@ -213,7 +219,7 @@ class SelectFileViewController: UIViewController, UITableViewDelegate, UITableVi
         actionSheet.showInView(self.view)
     }
     
-    func actionSheet(actionSheet: UIActionSheet!, clickedButtonAtIndex buttonIndex: Int)
+    func actionSheet(actionSheet: UIActionSheet, clickedButtonAtIndex buttonIndex: Int)
     {
         switch buttonIndex{
         case 0:
@@ -234,7 +240,7 @@ class SelectFileViewController: UIViewController, UITableViewDelegate, UITableVi
             }
             if (dbRestClient != nil && DBSession.sharedSession().isLinked()) {
                 NSLog("let's import file")
-                let secondViewController = self.storyboard?.instantiateViewControllerWithIdentifier("DropboxTableViewController") as DropboxTableViewController
+                let secondViewController = self.storyboard?.instantiateViewControllerWithIdentifier("DropboxTableViewController") as! DropboxTableViewController
 
                 self.navigationController?.pushViewController(secondViewController, animated: true)
             }
@@ -248,22 +254,22 @@ class SelectFileViewController: UIViewController, UITableViewDelegate, UITableVi
         }
     }
     
-    // upload to Dropbox..
-    func restClient(client: DBRestClient!, uploadedFile destPath: NSString!, from srcPath: NSString!, metadata: DBMetadata!) {
-        var refreshAlert = UIAlertController(title: metadata.filename, message: "stored", preferredStyle: UIAlertControllerStyle.Alert)
-        refreshAlert.addAction(UIAlertAction(title: "dismiss", style: .Default, handler: { (action: UIAlertAction!) in
-            println("File uploaded successfully to path: \(metadata.path)")
+    // upload to Dropbox.
+    func restClient(client: DBRestClient!, uploadedFile destPath: String!, from srcPath: String!, metadata: DBMetadata!) {
+        let refreshAlert = UIAlertController(title: metadata.filename, message: "stored", preferredStyle: UIAlertControllerStyle.Alert)
+        refreshAlert.addAction(UIAlertAction(title: "dismiss", style: .Default, handler: { (action: UIAlertAction) in
+            print("File uploaded successfully to path: \(metadata.path)")
         }))
         presentViewController(refreshAlert, animated: true, completion: nil)
     }
     
     func restClient(client: DBRestClient!, movePathFailedWithError error: NSError!) {
-        var refreshAlert = UIAlertController(title: "failed", message: "fail to store file", preferredStyle: UIAlertControllerStyle.Alert)
-        refreshAlert.addAction(UIAlertAction(title: "dismiss", style: .Default, handler: { (action: UIAlertAction!) in
+        let refreshAlert = UIAlertController(title: "failed", message: "fail to store file", preferredStyle: UIAlertControllerStyle.Alert)
+        refreshAlert.addAction(UIAlertAction(title: "dismiss", style: .Default, handler: { (action: UIAlertAction) in
             
         }))
         presentViewController(refreshAlert, animated: true, completion: nil)
-        println("File upload failed with error: \(error)")
+        print("File upload failed with error: \(error)")
     }
     
     

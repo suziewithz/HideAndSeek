@@ -27,10 +27,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(application: UIApplication, openURL url: NSURL,
-        sourceApplication: String, annotation: AnyObject?) -> Bool {
+        sourceApplication: String?, annotation: AnyObject) -> Bool {
             if DBSession.sharedSession().handleOpenURL(url) {
                 if DBSession.sharedSession().isLinked() {
-                    println("Dropbox be linked!!!!")
+                    print("Dropbox be linked!!!!")
                 }
                 return true
             }
